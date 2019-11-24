@@ -8,7 +8,7 @@
         <v-list-item>
             <v-list-item-content class="text-center">
                 <v-list-item-title class="title">
-                    App
+                    Stormwind Bank
                 </v-list-item-title>
                 <v-list-item-subtitle>
                     Subtitle
@@ -56,9 +56,9 @@ export default {
                 title: 'Dashboard',
             },
             {
-                name: 'products',
-                icon: 'mdi-package-variant-closed',
-                title: 'Products',
+                name: 'users',
+                icon: 'mdi-account-multiple',
+                title: 'Users',
             },
         ]
     }),

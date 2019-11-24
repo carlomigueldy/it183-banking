@@ -4,8 +4,8 @@ import home from '../views/home'
 import login from '../views/auth/login'
 import register from '../views/auth/register'
 import dashboard from '../views/dashboard'
-import products from '../views/products'
-import product_show from '../views/products/product_show'
+import users from '../views/users'
+import user from '../views/users/user'
 
 Vue.use(VueRouter)
 
@@ -28,18 +28,19 @@ export default new VueRouter({
             component: register,
         },
         {
-            path: '/dashboard',
+            path: '/admin/dashboard',
             name: 'dashboard',
             component: dashboard,
         },
         {
-            path: '/products',
-            name: 'products',
-            component: products,
+            path: '/admin/users',
+            name: 'users',
+            component: users,
         },
         {
-            path: '/products/:id',
-            component: product_show,
+            path: '/admin/users/:id',
+            name: 'user',
+            component: user,
         }
     ],
 })

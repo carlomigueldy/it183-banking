@@ -1,7 +1,7 @@
 <template>
     <v-content>
         <v-card>
-            <v-card-title>A single product</v-card-title>
+            <v-card-title>User Information</v-card-title>
             <v-card-text>
                 {{ $route.params }}
             </v-card-text>

@@ -1,10 +1,10 @@
 <template>
     <v-content>
         <v-card>
-            <v-card-title>Products</v-card-title>
+            <v-card-title>Users</v-card-title>
             <v-card-text>
-                Here is a list of products
-                <v-btn @click="$router.push({ path: '/products/1' })">go</v-btn>
+                A listing of all users.
+                <v-btn @click="$router.push({ name: 'user', params: { id: '1' } })">go</v-btn>
             </v-card-text>
         </v-card>
     </v-content>
