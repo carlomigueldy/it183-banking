@@ -56,9 +56,14 @@ export default {
                 title: 'Dashboard',
             },
             {
-                name: 'users',
-                icon: 'mdi-account-multiple',
-                title: 'Users',
+                name: 'tellers',
+                icon: 'mdi-account-tie-outline',
+                title: 'Tellers',
+            },
+            {
+                name: 'accounts',
+                icon: 'mdi-account-group',
+                title: 'Accounts',
             },
         ]
     }),

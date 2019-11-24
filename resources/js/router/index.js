@@ -6,6 +6,8 @@ import register from '../views/auth/register'
 import dashboard from '../views/dashboard'
 import users from '../views/users'
 import user from '../views/users/user'
+import accounts from '../views/accounts'
+import tellers from '../views/tellers'
 
 Vue.use(VueRouter)
 
@@ -41,6 +43,16 @@ export default new VueRouter({
             path: '/admin/users/:id',
             name: 'user',
             component: user,
-        }
+        },
+        {
+            path: '/admin/tellers',
+            name: 'tellers',
+            component: tellers,
+        },
+        {
+            path: '/admin/accounts',
+            name: 'accounts',
+            component: accounts,
+        },
     ],
 })
