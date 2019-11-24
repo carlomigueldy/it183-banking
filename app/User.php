@@ -70,4 +70,14 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo('App\Role');
     }
+
+    public function account()
+    {
+        return $this->hasOne('App\Account');
+    }
+
+    public function account_transactions()
+    {
+        return $this->hasMany('App\AccountTransaction');
+    }
 }
