@@ -20,4 +20,13 @@ class Account extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * An Account Holder may have many transactions
+     * with different Tellers.
+     */
+    public function account_transactions()
+    {
+        return $this->hasMany('App\AccountTransaction');
+    }
 }

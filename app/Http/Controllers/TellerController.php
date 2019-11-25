@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class TellerController extends Controller
@@ -13,11 +14,20 @@ class TellerController extends Controller
      */
     public function index()
     {
-        $tellers = Teller::all();
+        $tellers = User::where('role_id', 2)->get();
 
         return response()->json([
             'tellers' => $tellers,
         ]);
+    }
+
+    /**
+     * Displays Teller information on how many
+     * transactions he has made and on which Accounts.
+     */
+    public function show($id)
+    {
+        // Code
     }
 
     /**
@@ -45,5 +55,33 @@ class TellerController extends Controller
             ],
             'message' => 'A new Teller was created.',
         ]);
+    }
+
+    /**
+     * Updates a Teller info.
+     */
+    public function update(Request $request, $id)
+    {
+        // Code
+    }
+
+    /**
+     * Deletes a Teller.
+     */
+    public function destroy($id)
+    {
+        $teller = User::findOrFail($id);
+
+        if ($teller->role_id == 2) {
+            $teller->delete();
+
+            return response()->json([
+                'teller' => [
+                    'name' => $teller->name,
+                    'email' => $teller->email,
+                ],
+                'message' => 'A Teller has been deleted.',
+            ]);
+        }
     }
 }

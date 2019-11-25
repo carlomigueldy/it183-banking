@@ -39,12 +39,22 @@
                     <v-list-item-title>{{ route.title }}</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
+
+            <v-list-item @click="logout">
+                <v-list-item-icon>
+                    <v-icon>mdi-logout</v-icon>
+                </v-list-item-icon>
+
+                <v-list-item-content>
+                    <v-list-item-title>Logout</v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
         </v-list>
     </v-navigation-drawer>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'Sidebar',
@@ -67,6 +77,15 @@ export default {
             },
         ]
     }),
+
     computed: mapGetters(['auth', 'authRole']),
+
+    methods: {
+        logout() {
+            this.authLogOut()
+        },
+        
+        ...mapActions(['authLogOut'])
+    },
 }
 </script>

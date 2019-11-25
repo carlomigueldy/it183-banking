@@ -2074,6 +2074,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2139,7 +2155,12 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['auth', 'authRole'])
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['auth', 'authRole']),
+  methods: _objectSpread({
+    logout: function logout() {
+      this.authLogOut();
+    }
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['authLogOut']))
 });
 
 /***/ }),
@@ -2153,6 +2174,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2164,8 +2192,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'accounts'
+  name: 'accounts',
+  data: function data() {
+    return {
+      search: '',
+      headers: [{
+        text: 'Name',
+        align: 'left',
+        sortable: true,
+        value: 'name'
+      }, {
+        text: 'E-mail',
+        align: 'left',
+        sortable: true,
+        value: 'email'
+      }, {
+        text: 'Actions',
+        align: 'center',
+        sortable: false
+      }]
+    };
+  },
+  created: function created() {
+    this.fetchAllAccounts();
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getAccounts', 'getAccessToken']),
+  methods: _objectSpread({
+    fetchAllAccounts: function fetchAllAccounts() {
+      var access_token = this.getAccessToken;
+      this.fetchAccounts(access_token);
+    }
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchAccounts']))
 });
 
 /***/ }),
@@ -2437,6 +2510,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2448,8 +2528,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'tellers'
+  name: 'tellers',
+  data: function data() {
+    return {
+      search: '',
+      headers: [{
+        text: 'Name',
+        align: 'left',
+        sortable: true,
+        value: 'name'
+      }, {
+        text: 'E-mail',
+        align: 'left',
+        sortable: true,
+        value: 'email'
+      }, {
+        text: 'Actions',
+        align: 'center',
+        sortable: false
+      }]
+    };
+  },
+  created: function created() {
+    this.fetchAllTellers();
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getTellers', 'getAccessToken']),
+  methods: _objectSpread({
+    fetchAllTellers: function fetchAllTellers() {
+      var access_token = this.getAccessToken;
+      this.fetchTellers(access_token);
+    }
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchTellers']))
 });
 
 /***/ }),
@@ -4621,27 +4746,44 @@ var render = function() {
       _vm._v(" "),
       _c(
         "v-list",
-        _vm._l(_vm.routes, function(route, index) {
-          return _c(
+        [
+          _vm._l(_vm.routes, function(route, index) {
+            return _c(
+              "v-list-item",
+              { key: index, attrs: { to: { name: route.name } } },
+              [
+                _c(
+                  "v-list-item-icon",
+                  [_c("v-icon", [_vm._v(_vm._s(route.icon))])],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-list-item-content",
+                  [_c("v-list-item-title", [_vm._v(_vm._s(route.title))])],
+                  1
+                )
+              ],
+              1
+            )
+          }),
+          _vm._v(" "),
+          _c(
             "v-list-item",
-            { key: index, attrs: { to: { name: route.name } } },
+            { on: { click: _vm.logout } },
             [
-              _c(
-                "v-list-item-icon",
-                [_c("v-icon", [_vm._v(_vm._s(route.icon))])],
-                1
-              ),
+              _c("v-list-item-icon", [_c("v-icon", [_vm._v("mdi-logout")])], 1),
               _vm._v(" "),
               _c(
                 "v-list-item-content",
-                [_c("v-list-item-title", [_vm._v(_vm._s(route.title))])],
+                [_c("v-list-item-title", [_vm._v("Logout")])],
                 1
               )
             ],
             1
           )
-        }),
-        1
+        ],
+        2
       )
     ],
     1
@@ -4675,11 +4817,42 @@ var render = function() {
       _c(
         "v-card",
         [
-          _c("v-card-title", [_vm._v("Account")]),
+          _c(
+            "v-card-title",
+            [
+              _vm._v("\n            Accounts\n            "),
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  "append-icon": "mdi-search",
+                  label: "Search",
+                  "single-line": "",
+                  "hide-details": ""
+                },
+                model: {
+                  value: _vm.search,
+                  callback: function($$v) {
+                    _vm.search = $$v
+                  },
+                  expression: "search"
+                }
+              }),
+              _vm._v(" "),
+              _c("v-btn", { attrs: { color: "success" } }, [
+                _vm._v("Add Account Holder")
+              ])
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("v-card-text", [
-            _vm._v("\n            List of Account Holders.\n        ")
-          ])
+          _c("v-data-table", {
+            attrs: {
+              headers: _vm.headers,
+              items: _vm.getAccounts,
+              search: _vm.search
+            }
+          })
         ],
         1
       )
@@ -5118,11 +5291,42 @@ var render = function() {
       _c(
         "v-card",
         [
-          _c("v-card-title", [_vm._v("Tellers")]),
+          _c(
+            "v-card-title",
+            [
+              _vm._v("\n            Tellers\n            "),
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  "append-icon": "mdi-search",
+                  label: "Search",
+                  "single-line": "",
+                  "hide-details": ""
+                },
+                model: {
+                  value: _vm.search,
+                  callback: function($$v) {
+                    _vm.search = $$v
+                  },
+                  expression: "search"
+                }
+              }),
+              _vm._v(" "),
+              _c("v-btn", { attrs: { color: "success" } }, [
+                _vm._v("Add Teller")
+              ])
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("v-card-text", [
-            _vm._v("\n            List of all Tellers.\n        ")
-          ])
+          _c("v-data-table", {
+            attrs: {
+              headers: _vm.headers,
+              items: _vm.getTellers,
+              search: _vm.search
+            }
+          })
         ],
         1
       )
@@ -59020,23 +59224,23 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     name: 'register',
     component: _views_auth_register__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
-    path: '/admin/dashboard',
+    path: '/dashboard',
     name: 'dashboard',
     component: _views_dashboard__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
-    path: '/admin/users',
+    path: '/users',
     name: 'users',
     component: _views_users__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
-    path: '/admin/users/:id',
+    path: '/users/:id',
     name: 'user',
     component: _views_users_user__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {
-    path: '/admin/tellers',
+    path: '/tellers',
     name: 'tellers',
     component: _views_tellers__WEBPACK_IMPORTED_MODULE_9__["default"]
   }, {
-    path: '/admin/accounts',
+    path: '/accounts',
     name: 'accounts',
     component: _views_accounts__WEBPACK_IMPORTED_MODULE_8__["default"]
   }]
@@ -59057,15 +59261,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth.js");
+/* harmony import */ var _modules_accounts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/accounts */ "./resources/js/store/modules/accounts.js");
+/* harmony import */ var _modules_tellers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/tellers */ "./resources/js/store/modules/tellers.js");
+
+
 
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
-    auth: _modules_auth__WEBPACK_IMPORTED_MODULE_2__["default"]
+    auth: _modules_auth__WEBPACK_IMPORTED_MODULE_2__["default"],
+    accounts: _modules_accounts__WEBPACK_IMPORTED_MODULE_3__["default"],
+    tellers: _modules_tellers__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 }));
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/accounts.js":
+/*!************************************************!*\
+  !*** ./resources/js/store/modules/accounts.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _url__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../url */ "./resources/js/store/url.js");
+
+ // import router from '../../router'
+
+
+var state = {
+  accounts: []
+};
+var getters = {
+  getAccounts: function getAccounts(state) {
+    return state.accounts;
+  }
+};
+var mutations = {
+  setAccounts: function setAccounts(state, accounts) {
+    return state.accounts = accounts;
+  }
+};
+var actions = {
+  /**
+   * Fetches all Accounts from server.
+   * 
+   * @return void
+   */
+  fetchAccounts: function fetchAccounts(_ref, access_token) {
+    var commit, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function fetchAccounts$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            commit = _ref.commit;
+            _context.next = 3;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/accounts"), {}, {
+              headers: {
+                'Authorization': "Bearer ".concat(access_token)
+              }
+            }));
+
+          case 3:
+            res = _context.sent;
+            commit('setAccounts', res.data.accounts);
+
+          case 5:
+          case "end":
+            return _context.stop();
+        }
+      }
+    });
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
+});
 
 /***/ }),
 
@@ -59106,6 +59388,9 @@ var getters = {
   },
   isLoading: function isLoading(state) {
     return state.loading;
+  },
+  getAccessToken: function getAccessToken(state) {
+    return state.token;
   }
 };
 var mutations = {
@@ -59154,22 +59439,21 @@ var actions = {
             _router__WEBPACK_IMPORTED_MODULE_2__["default"].push({
               name: 'dashboard'
             });
-            console.log(response);
-            _context.next = 18;
+            _context.next = 17;
             break;
 
-          case 14:
-            _context.prev = 14;
+          case 13:
+            _context.prev = 13;
             _context.t0 = _context["catch"](2);
             commit('setLoading', false);
             console.log(_context.t0.response);
 
-          case 18:
+          case 17:
           case "end":
             return _context.stop();
         }
       }
-    }, null, null, [[2, 14]]);
+    }, null, null, [[2, 13]]);
   },
 
   /**
@@ -59343,23 +59627,22 @@ var actions = {
             commit('setUser', response.data.user);
             commit('serUserRole', response.data.role);
             commit('setLoading', false);
-            console.log(response.data);
-            _context5.next = 17;
+            _context5.next = 16;
             break;
 
-          case 12:
-            _context5.prev = 12;
+          case 11:
+            _context5.prev = 11;
             _context5.t0 = _context5["catch"](2);
             commit('setLoading', false);
             dispatch('destroyToken');
             console.log(_context5.t0.response);
 
-          case 17:
+          case 16:
           case "end":
             return _context5.stop();
         }
       }
-    }, null, null, [[2, 12]]);
+    }, null, null, [[2, 11]]);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -59367,6 +59650,85 @@ var actions = {
   getters: getters,
   actions: actions,
   mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/tellers.js":
+/*!***********************************************!*\
+  !*** ./resources/js/store/modules/tellers.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _url__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../url */ "./resources/js/store/url.js");
+
+
+
+var state = {
+  tellers: []
+};
+var getters = {
+  getTellers: function getTellers(state) {
+    return state.tellers;
+  }
+};
+var mutations = {
+  setTellers: function setTellers(state, tellers) {
+    return state.tellers = tellers;
+  }
+};
+var actions = {
+  /**
+   * Fetch all of the Telelrs from server.
+   * 
+   * @param { String } access_token 
+   */
+  fetchTellers: function fetchTellers(_ref, access_token) {
+    var commit, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function fetchTellers$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            commit = _ref.commit;
+            _context.prev = 1;
+            _context.next = 4;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/tellers"), {}, {
+              headers: {
+                'Authorization': "Bearer ".concat(access_token)
+              }
+            }));
+
+          case 4:
+            res = _context.sent;
+            commit('setTellers', res.data.tellers);
+            _context.next = 11;
+            break;
+
+          case 8:
+            _context.prev = 8;
+            _context.t0 = _context["catch"](1);
+            console.log(_context.t0.response);
+
+          case 11:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, null, null, [[1, 8]]);
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
 });
 
 /***/ }),

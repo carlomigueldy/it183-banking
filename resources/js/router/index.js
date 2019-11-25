@@ -30,27 +30,27 @@ export default new VueRouter({
             component: register,
         },
         {
-            path: '/admin/dashboard',
+            path: '/dashboard',
             name: 'dashboard',
             component: dashboard,
         },
         {
-            path: '/admin/users',
+            path: '/users',
             name: 'users',
             component: users,
         },
         {
-            path: '/admin/users/:id',
+            path: '/users/:id',
             name: 'user',
             component: user,
         },
         {
-            path: '/admin/tellers',
+            path: '/tellers',
             name: 'tellers',
             component: tellers,
         },
         {
-            path: '/admin/accounts',
+            path: '/accounts',
             name: 'accounts',
             component: accounts,
         },

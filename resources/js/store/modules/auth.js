@@ -14,6 +14,7 @@ const getters = {
     authRole: state => state.role,
     loggedIn: state => state.token !== null,
     isLoading: state => state.loading,
+    getAccessToken: state => state.token,
 }
 
 const mutations = {
@@ -42,7 +43,6 @@ const actions = {
             dispatch('getAuthUser')
             commit('setLoading', false)
             router.push({ name: 'dashboard' })
-            console.log(response)
         } catch (err) {
             commit('setLoading', false)
             console.log(err.response)
@@ -148,7 +148,6 @@ const actions = {
             commit('setUser', response.data.user)
             commit('serUserRole', response.data.role)
             commit('setLoading', false)
-            console.log(response.data)
         } catch (err) {
             commit('setLoading', false)
             dispatch('destroyToken')
