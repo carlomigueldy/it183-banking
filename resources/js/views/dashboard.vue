@@ -3,7 +3,7 @@
         <v-card>
             <v-card-title>Dashboard</v-card-title>
             <v-card-text>
-                Welcome to your App Dashboard.
+                Welcome to the Stormdwind Bank App Dashboard.
             </v-card-text>
         </v-card>
     </v-content>

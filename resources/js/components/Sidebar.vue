@@ -2,7 +2,6 @@
     <v-navigation-drawer
         dark
         app
-        permanent
         overflow
     >
         <v-list-item>
@@ -11,7 +10,7 @@
                     Stormwind Bank
                 </v-list-item-title>
                 <v-list-item-subtitle>
-                    Subtitle
+                    The Alliance ultimate banking
                 </v-list-item-subtitle>
             </v-list-item-content>
         </v-list-item>
@@ -59,6 +58,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'Sidebar',
     data: () => ({
+        background: window.origin + '/img/sidebar/bfa_alliance.jpg',
         routes: [
             {
                 name: 'dashboard',

@@ -2134,12 +2134,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Sidebar',
   data: function data() {
     return {
+      background: window.origin + '/img/sidebar/bfa_alliance.jpg',
       routes: [{
         name: 'dashboard',
         icon: 'mdi-view-dashboard-outline',
@@ -4700,7 +4700,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-navigation-drawer",
-    { attrs: { dark: "", app: "", permanent: "", overflow: "" } },
+    { attrs: { dark: "", app: "", overflow: "" } },
     [
       _c(
         "v-list-item",
@@ -4714,7 +4714,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("v-list-item-subtitle", [
-                _vm._v("\n                Subtitle\n            ")
+                _vm._v(
+                  "\n                The Alliance ultimate banking\n            "
+                )
               ])
             ],
             1
@@ -5223,7 +5225,9 @@ var render = function() {
           _c("v-card-title", [_vm._v("Dashboard")]),
           _vm._v(" "),
           _c("v-card-text", [
-            _vm._v("\n            Welcome to your App Dashboard.\n        ")
+            _vm._v(
+              "\n            Welcome to the Stormdwind Bank App Dashboard.\n        "
+            )
           ])
         ],
         1
