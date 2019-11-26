@@ -6,19 +6,46 @@
                 <v-spacer></v-spacer>
                 <v-text-field
                     v-model="search"
-                    append-icon="mdi-search"
+                    append-icon="mdi-magnify"
                     label="Search"
                     single-line
                     hide-details
                 ></v-text-field>
-                
-                <v-btn color="success">Add Account Holder</v-btn>
+
+                <v-btn 
+                    class="ml-5 mt-3"
+                    color="success">
+                    <v-icon>mdi-plus</v-icon>
+                    Add Account
+                </v-btn>
             </v-card-title>
+
             <v-data-table
                 :headers="headers"
                 :items="getAccounts"
                 :search="search"
-            ></v-data-table>
+            >
+                <template v-slot:item.actions="{ item }">
+                    <v-row>
+                        <v-col>
+                            <v-btn-toggle
+                                >
+                                <v-btn
+                                    @click="$router.push({ name: 'accounts.show', params: { id: item.id } })"
+                                    >
+                                    <v-icon>mdi-eye</v-icon>
+                                </v-btn>
+                                <v-btn>
+                                    <v-icon>mdi-pencil</v-icon>
+                                </v-btn>
+                                <v-btn>
+                                    <v-icon>mdi-delete</v-icon>
+                                </v-btn>
+                            </v-btn-toggle>
+                        </v-col>
+                    </v-row>
+                </template>
+            </v-data-table>
         </v-card>
     </v-content>
 </template>
@@ -47,6 +74,7 @@ export default {
                 text: 'Actions',
                 align: 'center',
                 sortable: false,
+                value: 'actions',
             }
         ]
     }),
