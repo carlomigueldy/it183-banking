@@ -5,7 +5,9 @@
         dark
         class="light-blue darken-4"
     >
-    <v-app-bar-nav-icon @click="toggleDrawer" />
+    <v-app-bar-nav-icon 
+        v-if="auth.name"
+        @click="toggleDrawer" />
 
     <span v-show="$router.currentRoute.name == 'home'">
         <v-toolbar-title>Stormwind Banking</v-toolbar-title>
@@ -63,7 +65,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'Navbar',
-    computed: mapGetters(['loggedIn']),
+    computed: mapGetters(['loggedIn', 'auth']),
     methods: {
         logout() {
             this.authLogOut()

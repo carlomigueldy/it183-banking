@@ -2052,10 +2052,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Navbar',
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['loggedIn']),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['loggedIn', 'auth']),
   methods: _objectSpread({
     logout: function logout() {
       this.authLogOut();
@@ -4701,7 +4703,9 @@ var render = function() {
       attrs: { fixed: "", app: "", dark: "" }
     },
     [
-      _c("v-app-bar-nav-icon", { on: { click: _vm.toggleDrawer } }),
+      _vm.auth.name
+        ? _c("v-app-bar-nav-icon", { on: { click: _vm.toggleDrawer } })
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "span",
