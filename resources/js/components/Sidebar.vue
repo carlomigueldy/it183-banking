@@ -1,5 +1,6 @@
 <template>
     <v-navigation-drawer
+        v-model="$store.state.appbar.drawer"
         dark
         app
         overflow
@@ -66,19 +67,21 @@ export default {
                 title: 'Dashboard',
             },
             {
-                name: 'tellers',
+                name: 'tellers.index',
                 icon: 'mdi-account-tie-outline',
                 title: 'Tellers',
             },
             {
-                name: 'accounts',
+                name: 'accounts.index',
                 icon: 'mdi-account-group',
                 title: 'Accounts',
             },
         ]
     }),
 
-    computed: mapGetters(['auth', 'authRole']),
+    computed: {
+        ...mapGetters(['auth', 'authRole'])
+    },
 
     methods: {
         logout() {

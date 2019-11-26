@@ -5,9 +5,10 @@
         dark
         class="light-blue darken-4"
     >
+    <v-app-bar-nav-icon @click="toggleDrawer" />
 
-    <span v-if="$router.currentRoute.name == 'home'">
-        App
+    <span v-show="$router.currentRoute.name == 'home'">
+        <v-toolbar-title>Stormwind Banking</v-toolbar-title>
     </span>
 
     <v-spacer></v-spacer>
@@ -68,7 +69,7 @@ export default {
             this.authLogOut()
         },
         
-        ...mapActions(['authLogOut']),
+        ...mapActions(['authLogOut', 'toggleDrawer']),
     }
 }
 </script>
