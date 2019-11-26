@@ -1,7 +1,11 @@
 <template>
-    <div>
-        <h1>This is the home page</h1>
-    </div>
+    <v-content>
+        <v-card>
+            <v-card-text>
+                This is the home page
+            </v-card-text>
+        </v-card>
+    </v-content>
 </template>
 
 <script>

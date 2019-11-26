@@ -2051,6 +2051,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Navbar',
@@ -2059,7 +2060,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     logout: function logout() {
       this.authLogOut();
     }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['authLogOut']))
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['authLogOut', 'toggleDrawer']))
 });
 
 /***/ }),
@@ -2134,6 +2135,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Sidebar',
@@ -2145,22 +2147,45 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         icon: 'mdi-view-dashboard-outline',
         title: 'Dashboard'
       }, {
-        name: 'tellers',
+        name: 'tellers.index',
         icon: 'mdi-account-tie-outline',
         title: 'Tellers'
       }, {
-        name: 'accounts',
+        name: 'accounts.index',
         icon: 'mdi-account-group',
         title: 'Accounts'
       }]
     };
   },
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['auth', 'authRole']),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['auth', 'authRole'])),
   methods: _objectSpread({
     logout: function logout() {
       this.authLogOut();
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['authLogOut']))
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/accounts/account.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/accounts/account.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'account'
 });
 
 /***/ }),
@@ -2206,6 +2231,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'accounts',
@@ -2225,7 +2277,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, {
         text: 'Actions',
         align: 'center',
-        sortable: false
+        sortable: false,
+        value: 'actions'
       }]
     };
   },
@@ -2495,6 +2548,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'home'
 });
@@ -2542,6 +2599,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'tellers',
@@ -2561,7 +2643,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, {
         text: 'Actions',
         align: 'center',
-        sortable: false
+        sortable: false,
+        value: 'actions'
       }]
     };
   },
@@ -2575,6 +2658,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.fetchTellers(access_token);
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchTellers']))
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/tellers/teller.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/tellers/teller.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'teller'
 });
 
 /***/ }),
@@ -4595,9 +4701,23 @@ var render = function() {
       attrs: { fixed: "", app: "", dark: "" }
     },
     [
-      _vm.$router.currentRoute.name == "home"
-        ? _c("span", [_vm._v("\n    App\n")])
-        : _vm._e(),
+      _c("v-app-bar-nav-icon", { on: { click: _vm.toggleDrawer } }),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.$router.currentRoute.name == "home",
+              expression: "$router.currentRoute.name == 'home'"
+            }
+          ]
+        },
+        [_c("v-toolbar-title", [_vm._v("Stormwind Banking")])],
+        1
+      ),
       _vm._v(" "),
       _c("v-spacer"),
       _vm._v(" "),
@@ -4700,7 +4820,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-navigation-drawer",
-    { attrs: { dark: "", app: "", overflow: "" } },
+    {
+      attrs: { dark: "", app: "", overflow: "" },
+      model: {
+        value: _vm.$store.state.appbar.drawer,
+        callback: function($$v) {
+          _vm.$set(_vm.$store.state.appbar, "drawer", $$v)
+        },
+        expression: "$store.state.appbar.drawer"
+      }
+    },
     [
       _c(
         "v-list-item",
@@ -4798,6 +4927,40 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/accounts/account.vue?vue&type=template&id=114917fa&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/accounts/account.vue?vue&type=template&id=114917fa& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-content",
+    [
+      _c("v-card", [
+        _vm._v(
+          "\n        Account Show " + _vm._s(_vm.$route.params.id) + "\n    "
+        )
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/accounts/index.vue?vue&type=template&id=767f8fa8&":
 /*!************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/accounts/index.vue?vue&type=template&id=767f8fa8& ***!
@@ -4827,7 +4990,7 @@ var render = function() {
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
-                  "append-icon": "mdi-search",
+                  "append-icon": "mdi-magnify",
                   label: "Search",
                   "single-line": "",
                   "hide-details": ""
@@ -4841,9 +5004,15 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("v-btn", { attrs: { color: "success" } }, [
-                _vm._v("Add Account Holder")
-              ])
+              _c(
+                "v-btn",
+                { staticClass: "ml-5 mt-3", attrs: { color: "success" } },
+                [
+                  _c("v-icon", [_vm._v("mdi-plus")]),
+                  _vm._v("\n                Add Account\n            ")
+                ],
+                1
+              )
             ],
             1
           ),
@@ -4853,7 +5022,62 @@ var render = function() {
               headers: _vm.headers,
               items: _vm.getAccounts,
               search: _vm.search
-            }
+            },
+            scopedSlots: _vm._u([
+              {
+                key: "item.actions",
+                fn: function(ref) {
+                  var item = ref.item
+                  return [
+                    _c(
+                      "v-row",
+                      [
+                        _c(
+                          "v-col",
+                          [
+                            _c(
+                              "v-btn-toggle",
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.$router.push({
+                                          name: "accounts.show",
+                                          params: { id: item.id }
+                                        })
+                                      }
+                                    }
+                                  },
+                                  [_c("v-icon", [_vm._v("mdi-eye")])],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-btn",
+                                  [_c("v-icon", [_vm._v("mdi-pencil")])],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-btn",
+                                  [_c("v-icon", [_vm._v("mdi-delete")])],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                }
+              }
+            ])
           })
         ],
         1
@@ -5258,16 +5482,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "v-content",
+    [
+      _c(
+        "v-card",
+        [
+          _c("v-card-text", [
+            _vm._v("\n            This is the home page\n        ")
+          ])
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("This is the home page")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -5303,7 +5534,7 @@ var render = function() {
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
-                  "append-icon": "mdi-search",
+                  "append-icon": "mdi-magnify",
                   label: "Search",
                   "single-line": "",
                   "hide-details": ""
@@ -5317,9 +5548,15 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("v-btn", { attrs: { color: "success" } }, [
-                _vm._v("Add Teller")
-              ])
+              _c(
+                "v-btn",
+                { staticClass: "ml-5 mt-3", attrs: { color: "success" } },
+                [
+                  _c("v-icon", [_vm._v("mdi-plus")]),
+                  _vm._v("\n                Add Teller\n            ")
+                ],
+                1
+              )
             ],
             1
           ),
@@ -5329,11 +5566,98 @@ var render = function() {
               headers: _vm.headers,
               items: _vm.getTellers,
               search: _vm.search
-            }
+            },
+            scopedSlots: _vm._u([
+              {
+                key: "item.actions",
+                fn: function(ref) {
+                  var item = ref.item
+                  return [
+                    _c(
+                      "v-row",
+                      [
+                        _c(
+                          "v-col",
+                          [
+                            _c(
+                              "v-btn-toggle",
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.$router.push({
+                                          name: "tellers.show",
+                                          params: { id: item.id }
+                                        })
+                                      }
+                                    }
+                                  },
+                                  [_c("v-icon", [_vm._v("mdi-eye")])],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-btn",
+                                  [_c("v-icon", [_vm._v("mdi-pencil")])],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-btn",
+                                  [_c("v-icon", [_vm._v("mdi-delete")])],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                }
+              }
+            ])
           })
         ],
         1
       )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/tellers/teller.vue?vue&type=template&id=166e93d2&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/tellers/teller.vue?vue&type=template&id=166e93d2& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-content",
+    [
+      _c("v-card", [
+        _vm._v("\n        Teller ID " + _vm._s(_vm.$route.params.id) + "\n    ")
+      ])
     ],
     1
   )
@@ -59201,7 +59525,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../views/users */ "./resources/js/views/users/index.vue");
 /* harmony import */ var _views_users_user__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../views/users/user */ "./resources/js/views/users/user.vue");
 /* harmony import */ var _views_accounts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../views/accounts */ "./resources/js/views/accounts/index.vue");
-/* harmony import */ var _views_tellers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../views/tellers */ "./resources/js/views/tellers/index.vue");
+/* harmony import */ var _views_accounts_account__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../views/accounts/account */ "./resources/js/views/accounts/account.vue");
+/* harmony import */ var _views_tellers__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../views/tellers */ "./resources/js/views/tellers/index.vue");
+/* harmony import */ var _views_tellers_teller__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../views/tellers/teller */ "./resources/js/views/tellers/teller.vue");
+
+
 
 
 
@@ -59231,7 +59559,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     path: '/dashboard',
     name: 'dashboard',
     component: _views_dashboard__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }, {
+  }, // Users
+  {
     path: '/users',
     name: 'users',
     component: _views_users__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -59239,14 +59568,24 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     path: '/users/:id',
     name: 'user',
     component: _views_users_user__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }, {
+  }, // Tellers
+  {
     path: '/tellers',
-    name: 'tellers',
-    component: _views_tellers__WEBPACK_IMPORTED_MODULE_9__["default"]
+    name: 'tellers.index',
+    component: _views_tellers__WEBPACK_IMPORTED_MODULE_10__["default"]
   }, {
+    path: '/tellers/:id',
+    name: 'tellers.show',
+    component: _views_tellers_teller__WEBPACK_IMPORTED_MODULE_11__["default"]
+  }, // Accounts
+  {
     path: '/accounts',
-    name: 'accounts',
+    name: 'accounts.index',
     component: _views_accounts__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }, {
+    path: '/accounts/:id',
+    name: 'accounts.show',
+    component: _views_accounts_account__WEBPACK_IMPORTED_MODULE_9__["default"]
   }]
 }));
 
@@ -59264,9 +59603,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth.js");
-/* harmony import */ var _modules_accounts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/accounts */ "./resources/js/store/modules/accounts.js");
-/* harmony import */ var _modules_tellers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/tellers */ "./resources/js/store/modules/tellers.js");
+/* harmony import */ var _modules_appbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/appbar */ "./resources/js/store/modules/appbar.js");
+/* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth.js");
+/* harmony import */ var _modules_accounts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/accounts */ "./resources/js/store/modules/accounts.js");
+/* harmony import */ var _modules_tellers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/tellers */ "./resources/js/store/modules/tellers.js");
+
 
 
 
@@ -59275,9 +59616,10 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
-    auth: _modules_auth__WEBPACK_IMPORTED_MODULE_2__["default"],
-    accounts: _modules_accounts__WEBPACK_IMPORTED_MODULE_3__["default"],
-    tellers: _modules_tellers__WEBPACK_IMPORTED_MODULE_4__["default"]
+    appbar: _modules_appbar__WEBPACK_IMPORTED_MODULE_2__["default"],
+    auth: _modules_auth__WEBPACK_IMPORTED_MODULE_3__["default"],
+    accounts: _modules_accounts__WEBPACK_IMPORTED_MODULE_4__["default"],
+    tellers: _modules_tellers__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
 }));
 
@@ -59349,6 +59691,37 @@ var actions = {
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,
   getters: getters,
+  mutations: mutations,
+  actions: actions
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/appbar.js":
+/*!**********************************************!*\
+  !*** ./resources/js/store/modules/appbar.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var state = {
+  drawer: null
+};
+var mutations = {
+  toggleDrawer: function toggleDrawer(state) {
+    return state.drawer = !state.drawer;
+  }
+};
+var actions = {
+  toggleDrawer: function toggleDrawer(_ref) {
+    var commit = _ref.commit;
+    commit('toggleDrawer');
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
   mutations: mutations,
   actions: actions
 });
@@ -59748,6 +60121,75 @@ var actions = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "url", function() { return url; });
 var url = window.location.origin;
+
+/***/ }),
+
+/***/ "./resources/js/views/accounts/account.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/views/accounts/account.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _account_vue_vue_type_template_id_114917fa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./account.vue?vue&type=template&id=114917fa& */ "./resources/js/views/accounts/account.vue?vue&type=template&id=114917fa&");
+/* harmony import */ var _account_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./account.vue?vue&type=script&lang=js& */ "./resources/js/views/accounts/account.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _account_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _account_vue_vue_type_template_id_114917fa___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _account_vue_vue_type_template_id_114917fa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/accounts/account.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/accounts/account.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/views/accounts/account.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_account_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./account.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/accounts/account.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_account_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/accounts/account.vue?vue&type=template&id=114917fa&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/views/accounts/account.vue?vue&type=template&id=114917fa& ***!
+  \********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_account_vue_vue_type_template_id_114917fa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./account.vue?vue&type=template&id=114917fa& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/accounts/account.vue?vue&type=template&id=114917fa&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_account_vue_vue_type_template_id_114917fa___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_account_vue_vue_type_template_id_114917fa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -60160,6 +60602,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_4b14b7e9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_4b14b7e9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/tellers/teller.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/views/tellers/teller.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _teller_vue_vue_type_template_id_166e93d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./teller.vue?vue&type=template&id=166e93d2& */ "./resources/js/views/tellers/teller.vue?vue&type=template&id=166e93d2&");
+/* harmony import */ var _teller_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./teller.vue?vue&type=script&lang=js& */ "./resources/js/views/tellers/teller.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _teller_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _teller_vue_vue_type_template_id_166e93d2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _teller_vue_vue_type_template_id_166e93d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/tellers/teller.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/tellers/teller.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/views/tellers/teller.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_teller_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./teller.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/tellers/teller.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_teller_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/tellers/teller.vue?vue&type=template&id=166e93d2&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/views/tellers/teller.vue?vue&type=template&id=166e93d2& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_teller_vue_vue_type_template_id_166e93d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./teller.vue?vue&type=template&id=166e93d2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/tellers/teller.vue?vue&type=template&id=166e93d2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_teller_vue_vue_type_template_id_166e93d2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_teller_vue_vue_type_template_id_166e93d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
