@@ -4719,7 +4719,7 @@ var render = function() {
             }
           ]
         },
-        [_c("v-toolbar-title", [_vm._v("Stormwind Banking")])],
+        [_c("v-toolbar-title", [_vm._v("Stormwind Bank")])],
         1
       ),
       _vm._v(" "),

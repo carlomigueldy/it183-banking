@@ -10,7 +10,7 @@
         @click="toggleDrawer" />
 
     <span v-show="$router.currentRoute.name == 'home'">
-        <v-toolbar-title>Stormwind Banking</v-toolbar-title>
+        <v-toolbar-title>Stormwind Bank</v-toolbar-title>
     </span>
 
     <v-spacer></v-spacer>
