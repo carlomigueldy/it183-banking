@@ -51,8 +51,9 @@ const actions = {
      * 
      * @param { Object } teller 
      */
-    async addAccount({ dispatch }, account) {
+    async addAccount({ dispatch, rootState }, account) {
         try {
+            const access_token = rootState.token
             const res = await axios.post(`${url}/api/accounts`, {
                 name: account.name,
                 email: account.email,

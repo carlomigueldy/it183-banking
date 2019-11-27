@@ -16,7 +16,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $accounts = User::where('role_id', 1)->get();
+        $accounts = User::where('role_id', 1)->with('account')->get();
 
         return response()->json([
             'accounts' => $accounts,
@@ -69,6 +69,7 @@ class AccountController extends Controller
 
         $account = Account::create([
             'user_id' => $user->id,
+            'account_number' => now()->timestamp,
         ]);
 
         return response()->json([

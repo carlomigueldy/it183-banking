@@ -25,6 +25,7 @@ class AccountSeed extends Seeder
             
             Account::create([
                 'user_id' => $user->id,
+                'account_number' => now()->timestamp,
                 'balance' => $faker->numberBetween($min = 500, $max = 1000),
             ]);
         }

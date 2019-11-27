@@ -12,12 +12,7 @@
                     hide-details
                 ></v-text-field>
 
-                <v-btn 
-                    class="ml-5 mt-3"
-                    color="success">
-                    <v-icon>mdi-plus</v-icon>
-                    Add Account
-                </v-btn>
+                <CreateAccount />
             </v-card-title>
 
             <v-data-table
@@ -52,12 +47,21 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import CreateAccount from './dialogs/create'
 
 export default {
     name: 'accounts',
+    components: { CreateAccount },
+    
     data: () => ({
         search: '',
         headers: [
+            {
+                text: 'Account Number',
+                align: 'left',
+                sortable: true,
+                value: 'account.account_number',
+            },
             {
                 text: 'Name',
                 align: 'left',
