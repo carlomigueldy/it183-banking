@@ -1,15 +1,16 @@
 <template>
     <v-dialog
-        v-model="dialog"
+        v-model="$store.state.accounts.dialog"
         width="500"
         >
         <template v-slot:activator="{ on }">
             <v-btn 
                 v-on="on"
+                class="ml-5 mt-3"
                 color="success"
             >
                 <v-icon>mdi-plus</v-icon>
-                Add Account
+                Add Account 
             </v-btn>
         </template>
 
@@ -72,7 +73,6 @@ import { mapActions } from 'vuex'
 
 export default {
     data: () => ({
-        dialog: false,
         account: {
             name: '',
             email: '',

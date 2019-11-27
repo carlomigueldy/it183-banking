@@ -5,6 +5,11 @@ import { url } from '../url'
 const state = {
     accounts: [],
     account: {},
+    dialog: false,
+    snackbar: {
+        toggle: false,
+        text: 'Text for snackbar',
+    }
 }
 
 const getters = {
@@ -15,6 +20,9 @@ const getters = {
 const mutations = {
     setAccounts: (state, accounts) => state.accounts = accounts, 
     setAccount: (state, account) => state.account = account,
+    setDialog: state => state.dialog = !state.dialog,
+    setSnackbarToggle: state => state.snackbar.toggle = !state.snackbar.toggle,
+    setSnackbarText: (state, text) => state.snackbar.text = text,
 }
 
 const actions = {
@@ -51,7 +59,7 @@ const actions = {
      * 
      * @param { Object } teller 
      */
-    async addAccount({ dispatch, rootState }, account) {
+    async addAccount({ commit, dispatch, rootState }, account) {
         try {
             const access_token = rootState.token
             const res = await axios.post(`${url}/api/accounts`, {
@@ -63,8 +71,14 @@ const actions = {
 
             console.log('[accounts] addAcount()', res.data)
             dispatch('fetchAccounts')
+            commit('setDialog')
+            commit('setSnackbarText', 'An Account has been added successfully!')
+            commit('setSnackbarToggle')
         } catch (err) {
             console.log(err.response)
+            commit('setSnackbarText', 'An Account was not added.')
+            commit('setSnackbarToggle')
+            commit('setDialog')
         }
     },
 

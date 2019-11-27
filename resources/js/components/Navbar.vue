@@ -39,10 +39,20 @@
                 </v-btn>
             </template>
             <v-list>
+                <v-list-item>
+                    <v-list-item-avatar>
+                        <img src="/img/default/default.png">
+                    </v-list-item-avatar>
+
+                    <v-list-item-content>
+                        <v-list-item-title>{{ auth.name }}</v-list-item-title>
+                        <v-list-item-subtitle>{{ authRole.name }}</v-list-item-subtitle>
+                    </v-list-item-content>
+                </v-list-item>
                 <v-list-item
                     @click="$router.push({ name: 'dashboard' })"
                 >
-                    <v-list-item-title>Dashboard</v-list-item-title>
+                    <v-list-item-title>Go to Dashboard</v-list-item-title>
                 </v-list-item>
                 <v-list-item
                     @click="logout"
@@ -61,7 +71,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'Navbar',
-    computed: mapGetters(['loggedIn', 'auth']),
+    computed: mapGetters(['loggedIn', 'auth', 'authRole']),
     methods: {
         logout() {
             this.authLogOut()
