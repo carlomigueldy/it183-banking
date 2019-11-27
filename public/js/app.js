@@ -2050,10 +2050,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Navbar',
@@ -2138,25 +2134,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Sidebar',
   data: function data() {
     return {
-      background: window.origin + '/img/sidebar/bfa_alliance.jpg',
-      routes: [{
-        name: 'dashboard',
-        icon: 'mdi-view-dashboard-outline',
-        title: 'Dashboard'
-      }, {
-        name: 'tellers.index',
-        icon: 'mdi-account-tie-outline',
-        title: 'Tellers'
-      }, {
-        name: 'accounts.index',
-        icon: 'mdi-account-group',
-        title: 'Accounts'
-      }]
+      background: window.origin + '/img/sidebar/bfa_alliance.jpg'
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['auth', 'authRole'])),
@@ -2366,11 +2375,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'login',
@@ -2385,122 +2389,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['authLogIn']), {
     login: function login() {
       this.authLogIn(this.form);
-    }
-  })
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/register.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/auth/register.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'register',
-  data: function data() {
-    return {
-      form: {
-        name: null,
-        email: null,
-        password: null,
-        password_confirmation: null
-      }
-    };
-  },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['authRegister']), {
-    register: function register() {
-      this.authRegister(this.form);
     }
   })
 });
@@ -4730,11 +4618,7 @@ var render = function() {
             "span",
             [
               _c("v-btn", { attrs: { to: { name: "login" }, text: "" } }, [
-                _vm._v("\n        Login\n    ")
-              ]),
-              _vm._v(" "),
-              _c("v-btn", { attrs: { to: { name: "register" }, text: "" } }, [
-                _vm._v("\n        Register\n    ")
+                _vm._v("\n            Login\n        ")
               ])
             ],
             1
@@ -4882,26 +4766,66 @@ var render = function() {
       _c(
         "v-list",
         [
-          _vm._l(_vm.routes, function(route, index) {
-            return _c(
-              "v-list-item",
-              { key: index, attrs: { to: { name: route.name } } },
-              [
-                _c(
-                  "v-list-item-icon",
-                  [_c("v-icon", [_vm._v(_vm._s(route.icon))])],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "v-list-item-content",
-                  [_c("v-list-item-title", [_vm._v(_vm._s(route.title))])],
-                  1
-                )
-              ],
-              1
-            )
-          }),
+          _c(
+            "v-list-item",
+            { attrs: { to: { name: "dashboard" } } },
+            [
+              _c(
+                "v-list-item-icon",
+                [_c("v-icon", [_vm._v("mdi-view-dashboard-outline")])],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-item-content",
+                [_c("v-list-item-title", [_vm._v("Dashboard")])],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm.authRole.name === "Manager"
+            ? _c(
+                "v-list-item",
+                { attrs: { to: { name: "tellers.index" } } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-account-tie-outline")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [_c("v-list-item-title", [_vm._v("Tellers")])],
+                    1
+                  )
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.authRole.name === "Manager" || _vm.authRole.name === "Teller"
+            ? _c(
+                "v-list-item",
+                { attrs: { to: { name: "accounts.index" } } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-account-group")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [_c("v-list-item-title", [_vm._v("Accounts")])],
+                    1
+                  )
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "v-list-item",
@@ -4918,7 +4842,7 @@ var render = function() {
             1
           )
         ],
-        2
+        1
       )
     ],
     1
@@ -5179,22 +5103,6 @@ var render = function() {
                           })
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        [
-                          _vm._v(
-                            "\n                        Need an account? Register \n                        "
-                          ),
-                          _c(
-                            "router-link",
-                            { attrs: { to: { name: "register" } } },
-                            [_vm._v("here")]
-                          ),
-                          _vm._v(".\n                    ")
-                        ],
-                        1
                       )
                     ],
                     1
@@ -5216,195 +5124,6 @@ var render = function() {
                             "\n                        Login\n                    "
                           )
                         ]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/register.vue?vue&type=template&id=005be7bb&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/auth/register.vue?vue&type=template&id=005be7bb& ***!
-  \***********************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "v-content",
-        [
-          _c(
-            "v-container",
-            { staticClass: "fill-height", attrs: { fluid: "" } },
-            [
-              _c(
-                "v-row",
-                { attrs: { align: "center", justify: "center" } },
-                [
-                  _c(
-                    "v-col",
-                    { attrs: { cols: "12", sm: "8", md: "4" } },
-                    [
-                      _c(
-                        "v-card",
-                        { staticClass: "elevation-12" },
-                        [
-                          _c(
-                            "v-toolbar",
-                            {
-                              staticClass: "light-blue darken-4",
-                              attrs: { flat: "", dark: "" }
-                            },
-                            [
-                              _c("v-toolbar-title", [_vm._v("Register")]),
-                              _vm._v(" "),
-                              _c("v-spacer")
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-card-text",
-                            [
-                              _c(
-                                "v-form",
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      label: "Name",
-                                      "prepend-icon": "mdi-account",
-                                      type: "text"
-                                    },
-                                    model: {
-                                      value: _vm.form.name,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "name", $$v)
-                                      },
-                                      expression: "form.name"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      label: "Email Address",
-                                      "prepend-icon": "mdi-email",
-                                      type: "email"
-                                    },
-                                    model: {
-                                      value: _vm.form.email,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "email", $$v)
-                                      },
-                                      expression: "form.email"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      label: "Password",
-                                      "prepend-icon": "mdi-lock",
-                                      type: "password"
-                                    },
-                                    model: {
-                                      value: _vm.form.password,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "password", $$v)
-                                      },
-                                      expression: "form.password"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      label: "Confirm Password",
-                                      "prepend-icon": "mdi-lock",
-                                      type: "password"
-                                    },
-                                    model: {
-                                      value: _vm.form.password_confirmation,
-                                      callback: function($$v) {
-                                        _vm.$set(
-                                          _vm.form,
-                                          "password_confirmation",
-                                          $$v
-                                        )
-                                      },
-                                      expression: "form.password_confirmation"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                [
-                                  _vm._v(
-                                    "\n                            Already have an account? Login \n                            "
-                                  ),
-                                  _c(
-                                    "router-link",
-                                    { attrs: { to: { name: "login" } } },
-                                    [_vm._v("here")]
-                                  ),
-                                  _vm._v(".\n                        ")
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-card-actions",
-                            [
-                              _c("v-spacer"),
-                              _vm._v(" "),
-                              _c(
-                                "v-btn",
-                                {
-                                  attrs: { color: "primary" },
-                                  on: { click: _vm.register }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                            Register\n                        "
-                                  )
-                                ]
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
                       )
                     ],
                     1
@@ -59524,15 +59243,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _views_home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../views/home */ "./resources/js/views/home.vue");
 /* harmony import */ var _views_auth_login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/auth/login */ "./resources/js/views/auth/login.vue");
-/* harmony import */ var _views_auth_register__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/auth/register */ "./resources/js/views/auth/register.vue");
-/* harmony import */ var _views_dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../views/dashboard */ "./resources/js/views/dashboard.vue");
-/* harmony import */ var _views_users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../views/users */ "./resources/js/views/users/index.vue");
-/* harmony import */ var _views_users_user__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../views/users/user */ "./resources/js/views/users/user.vue");
-/* harmony import */ var _views_accounts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../views/accounts */ "./resources/js/views/accounts/index.vue");
-/* harmony import */ var _views_accounts_account__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../views/accounts/account */ "./resources/js/views/accounts/account.vue");
-/* harmony import */ var _views_tellers__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../views/tellers */ "./resources/js/views/tellers/index.vue");
-/* harmony import */ var _views_tellers_teller__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../views/tellers/teller */ "./resources/js/views/tellers/teller.vue");
-
+/* harmony import */ var _views_dashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/dashboard */ "./resources/js/views/dashboard.vue");
+/* harmony import */ var _views_users__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../views/users */ "./resources/js/views/users/index.vue");
+/* harmony import */ var _views_users_user__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../views/users/user */ "./resources/js/views/users/user.vue");
+/* harmony import */ var _views_accounts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../views/accounts */ "./resources/js/views/accounts/index.vue");
+/* harmony import */ var _views_accounts_account__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../views/accounts/account */ "./resources/js/views/accounts/account.vue");
+/* harmony import */ var _views_tellers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../views/tellers */ "./resources/js/views/tellers/index.vue");
+/* harmony import */ var _views_tellers_teller__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../views/tellers/teller */ "./resources/js/views/tellers/teller.vue");
 
 
 
@@ -59556,40 +59273,36 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     name: 'login',
     component: _views_auth_login__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: '/register',
-    name: 'register',
-    component: _views_auth_register__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }, {
     path: '/dashboard',
     name: 'dashboard',
-    component: _views_dashboard__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _views_dashboard__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, // Users
   {
     path: '/users',
     name: 'users',
-    component: _views_users__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _views_users__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
     path: '/users/:id',
     name: 'user',
-    component: _views_users_user__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _views_users_user__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, // Tellers
   {
     path: '/tellers',
     name: 'tellers.index',
-    component: _views_tellers__WEBPACK_IMPORTED_MODULE_10__["default"]
+    component: _views_tellers__WEBPACK_IMPORTED_MODULE_9__["default"]
   }, {
     path: '/tellers/:id',
     name: 'tellers.show',
-    component: _views_tellers_teller__WEBPACK_IMPORTED_MODULE_11__["default"]
+    component: _views_tellers_teller__WEBPACK_IMPORTED_MODULE_10__["default"]
   }, // Accounts
   {
     path: '/accounts',
     name: 'accounts.index',
-    component: _views_accounts__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _views_accounts__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {
     path: '/accounts/:id',
     name: 'accounts.show',
-    component: _views_accounts_account__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _views_accounts_account__WEBPACK_IMPORTED_MODULE_8__["default"]
   }]
 }));
 
@@ -59648,16 +59361,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var state = {
-  accounts: []
+  accounts: [],
+  account: {}
 };
 var getters = {
   getAccounts: function getAccounts(state) {
     return state.accounts;
+  },
+  getAccount: function getAccount(state) {
+    return state.account;
   }
 };
 var mutations = {
   setAccounts: function setAccounts(state, accounts) {
     return state.accounts = accounts;
+  },
+  setAccount: function setAccount(state, account) {
+    return state.account = account;
   }
 };
 var actions = {
@@ -59690,6 +59410,127 @@ var actions = {
         }
       }
     });
+  },
+
+  /**
+   * Fetches a single Account information.
+   * 
+   * @param { Integer } id 
+   */
+  fetchAccount: function fetchAccount(_ref2, id) {
+    var commit, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function fetchAccount$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            commit = _ref2.commit;
+            _context2.prev = 1;
+            _context2.next = 4;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/accounts/").concat(id)));
+
+          case 4:
+            res = _context2.sent;
+            commit('setAccount', res.data);
+            _context2.next = 11;
+            break;
+
+          case 8:
+            _context2.prev = 8;
+            _context2.t0 = _context2["catch"](1);
+            console.log(_context2.t0.response);
+
+          case 11:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, null, null, [[1, 8]]);
+  },
+
+  /**
+   * Send a POST request to add new Account.
+   * 
+   * @param { Object } teller 
+   */
+  addAccount: function addAccount(_ref3, account) {
+    var dispatch, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function addAccount$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            dispatch = _ref3.dispatch;
+            _context3.prev = 1;
+            _context3.next = 4;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/accounts"), {
+              name: account.name,
+              email: account.email,
+              password: account.password,
+              password_confirmation: account.password
+            }, {
+              headers: {
+                'Authorization': "Bearer ".concat(access_token)
+              }
+            }));
+
+          case 4:
+            res = _context3.sent;
+            console.log('[accounts] addAcount()', res.data);
+            dispatch('fetchAccounts');
+            _context3.next = 12;
+            break;
+
+          case 9:
+            _context3.prev = 9;
+            _context3.t0 = _context3["catch"](1);
+            console.log(_context3.t0.response);
+
+          case 12:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, null, null, [[1, 9]]);
+  },
+
+  /**
+   * Sends an HTTP DELETE method request, 
+   * to delete Account.
+   * 
+   * @param { Integer } id 
+   */
+  deleteAccount: function deleteAccount(_ref4, id) {
+    var dispatch, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function deleteAccount$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            dispatch = _ref4.dispatch;
+            _context4.prev = 1;
+            _context4.next = 4;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/accounts/").concat(id), {}, {
+              headers: {
+                'Authorization': "Bearer ".concat(access_token)
+              }
+            }));
+
+          case 4:
+            res = _context4.sent;
+            console.log('[accounts] deleteAccount()', res.data);
+            dispatch('fetchAccounts');
+            _context4.next = 12;
+            break;
+
+          case 9:
+            _context4.prev = 9;
+            _context4.t0 = _context4["catch"](1);
+            console.log(_context4.t0.response);
+
+          case 12:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, null, null, [[1, 9]]);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -60053,16 +59894,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var state = {
-  tellers: []
+  tellers: [],
+  teller: {}
 };
 var getters = {
   getTellers: function getTellers(state) {
     return state.tellers;
+  },
+  getTeller: function getTeller(state) {
+    return state.teller;
   }
 };
 var mutations = {
   setTellers: function setTellers(state, tellers) {
     return state.tellers = tellers;
+  },
+  setTeller: function setTeller(state, teller) {
+    return state.teller = teller;
   }
 };
 var actions = {
@@ -60103,6 +59951,127 @@ var actions = {
         }
       }
     }, null, null, [[1, 8]]);
+  },
+
+  /**
+   * Fetches a single Teller information.
+   * 
+   * @param { Integer } id 
+   */
+  fetchTeller: function fetchTeller(_ref2, id) {
+    var commit, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function fetchTeller$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            commit = _ref2.commit;
+            _context2.prev = 1;
+            _context2.next = 4;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/tellers/").concat(id)));
+
+          case 4:
+            res = _context2.sent;
+            commit('setTeller', res.data);
+            _context2.next = 11;
+            break;
+
+          case 8:
+            _context2.prev = 8;
+            _context2.t0 = _context2["catch"](1);
+            console.log(_context2.t0.response);
+
+          case 11:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, null, null, [[1, 8]]);
+  },
+
+  /**
+   * Send a POST request to add new Teller.
+   * 
+   * @param { Object } teller 
+   */
+  addTeller: function addTeller(_ref3, teller) {
+    var dispatch, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function addTeller$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            dispatch = _ref3.dispatch;
+            _context3.prev = 1;
+            _context3.next = 4;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/tellers"), {
+              name: teller.name,
+              email: teller.email,
+              password: teller.password,
+              password_confirmation: teller.password
+            }, {
+              headers: {
+                'Authorization': "Bearer ".concat(access_token)
+              }
+            }));
+
+          case 4:
+            res = _context3.sent;
+            console.log('[tellers] addTeller()', res.data);
+            dispatch('fetchTellers');
+            _context3.next = 12;
+            break;
+
+          case 9:
+            _context3.prev = 9;
+            _context3.t0 = _context3["catch"](1);
+            console.log(_context3.t0.response);
+
+          case 12:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, null, null, [[1, 9]]);
+  },
+
+  /**
+   * Sends an HTTP DELETE method request, 
+   * to delete Teller.
+   * 
+   * @param { Integer } id 
+   */
+  deleteTeller: function deleteTeller(_ref4, id) {
+    var dispatch, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function deleteTeller$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            dispatch = _ref4.dispatch;
+            _context4.prev = 1;
+            _context4.next = 4;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/tellers/").concat(id), {}, {
+              headers: {
+                'Authorization': "Bearer ".concat(access_token)
+              }
+            }));
+
+          case 4:
+            res = _context4.sent;
+            console.log('[tellers] deleteTeller()', res.data);
+            dispatch('fetchTellers');
+            _context4.next = 12;
+            break;
+
+          case 9:
+            _context4.prev = 9;
+            _context4.t0 = _context4["catch"](1);
+            console.log(_context4.t0.response);
+
+          case 12:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, null, null, [[1, 9]]);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -60330,75 +60299,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_login_vue_vue_type_template_id_6517b581___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_login_vue_vue_type_template_id_6517b581___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/views/auth/register.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/views/auth/register.vue ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _register_vue_vue_type_template_id_005be7bb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./register.vue?vue&type=template&id=005be7bb& */ "./resources/js/views/auth/register.vue?vue&type=template&id=005be7bb&");
-/* harmony import */ var _register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./register.vue?vue&type=script&lang=js& */ "./resources/js/views/auth/register.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _register_vue_vue_type_template_id_005be7bb___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _register_vue_vue_type_template_id_005be7bb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/views/auth/register.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/views/auth/register.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/views/auth/register.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./register.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/register.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/views/auth/register.vue?vue&type=template&id=005be7bb&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/views/auth/register.vue?vue&type=template&id=005be7bb& ***!
-  \*****************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_register_vue_vue_type_template_id_005be7bb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./register.vue?vue&type=template&id=005be7bb& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/register.vue?vue&type=template&id=005be7bb&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_register_vue_vue_type_template_id_005be7bb___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_register_vue_vue_type_template_id_005be7bb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

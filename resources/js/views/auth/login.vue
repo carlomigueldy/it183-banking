@@ -34,11 +34,6 @@
                             type="password"
                         />
                         </v-form>
-
-                        <div>
-                            Need an account? Register 
-                            <router-link :to="{ name: 'register' }">here</router-link>.
-                        </div>
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer />

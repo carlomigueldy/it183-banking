@@ -29,14 +29,40 @@
 
         <v-list>
             <v-list-item 
-                v-for="(route, index) in routes" :key="index"
-                :to="{ name: route.name }">
+                :to="{ name: 'dashboard' }"
+                >
                 <v-list-item-icon>
-                    <v-icon>{{ route.icon }}</v-icon>
+                    <v-icon>mdi-view-dashboard-outline</v-icon>
                 </v-list-item-icon>
 
                 <v-list-item-content>
-                    <v-list-item-title>{{ route.title }}</v-list-item-title>
+                    <v-list-item-title>Dashboard</v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+
+            <v-list-item 
+                v-if="authRole.name === 'Manager'"
+                :to="{ name: 'tellers.index' }"
+                >
+                <v-list-item-icon>
+                    <v-icon>mdi-account-tie-outline</v-icon>
+                </v-list-item-icon>
+
+                <v-list-item-content>
+                    <v-list-item-title>Tellers</v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+
+            <v-list-item 
+                v-if="authRole.name === 'Manager' || authRole.name === 'Teller'"
+                :to="{ name: 'accounts.index' }"
+                >
+                <v-list-item-icon>
+                    <v-icon>mdi-account-group</v-icon>
+                </v-list-item-icon>
+
+                <v-list-item-content>
+                    <v-list-item-title>Accounts</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
 
@@ -60,23 +86,6 @@ export default {
     name: 'Sidebar',
     data: () => ({
         background: window.origin + '/img/sidebar/bfa_alliance.jpg',
-        routes: [
-            {
-                name: 'dashboard',
-                icon: 'mdi-view-dashboard-outline',
-                title: 'Dashboard',
-            },
-            {
-                name: 'tellers.index',
-                icon: 'mdi-account-tie-outline',
-                title: 'Tellers',
-            },
-            {
-                name: 'accounts.index',
-                icon: 'mdi-account-group',
-                title: 'Accounts',
-            },
-        ]
     }),
 
     computed: {

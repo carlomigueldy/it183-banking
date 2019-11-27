@@ -3,14 +3,17 @@ import { url } from '../url'
 
 const state = {
     tellers: [],
+    teller: {},
 }
 
 const getters = {
     getTellers: state => state.tellers,
+    getTeller: state => state.teller,
 }
 
 const mutations = {
     setTellers: (state, tellers) => state.tellers = tellers,
+    setTeller: (state, teller) => state.teller = teller,
 }
 
 const actions = {
@@ -29,7 +32,62 @@ const actions = {
         } catch (err) {
             console.log(err.response)
         }
-    }
+    },
+
+    /**
+     * Fetches a single Teller information.
+     * 
+     * @param { Integer } id 
+     */
+    async fetchTeller({ commit }, id) {
+        try {
+            const res = await axios.get(`${url}/api/tellers/${id}`)
+
+            commit('setTeller', res.data)
+        } catch (err) {
+            console.log(err.response)
+        }
+    },
+
+    /**
+     * Send a POST request to add new Teller.
+     * 
+     * @param { Object } teller 
+     */
+    async addTeller({ dispatch }, teller) {
+        try {
+            const res = await axios.post(`${url}/api/tellers`, {
+                name: teller.name,
+                email: teller.email,
+                password: teller.password,
+                password_confirmation: teller.password,
+            }, { headers: { 'Authorization': `Bearer ${access_token}` } })
+
+            console.log('[tellers] addTeller()', res.data)
+            dispatch('fetchTellers')
+        } catch (err) {
+            console.log(err.response)
+        }
+    },
+
+    /**
+     * Sends an HTTP DELETE method request, 
+     * to delete Teller.
+     * 
+     * @param { Integer } id 
+     */
+    async deleteTeller({ dispatch }, id) {
+        try {
+            const res = await axios.delete(`${url}/api/tellers/${id}`, {}, {
+                headers: { 'Authorization': `Bearer ${access_token}` }
+            })
+
+            console.log('[tellers] deleteTeller()', res.data)
+            dispatch('fetchTellers')
+        } catch (err) {
+            console.log(err.response)
+        }
+    },
 }
 
 export default {

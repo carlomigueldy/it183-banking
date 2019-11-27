@@ -5,57 +5,53 @@
         dark
         class="light-blue darken-4"
     >
-    <v-app-bar-nav-icon 
-        v-if="auth.name"
-        @click="toggleDrawer" />
+        <v-app-bar-nav-icon 
+            v-if="auth.name"
+            @click="toggleDrawer" 
+        />
 
-    <span v-show="$router.currentRoute.name == 'home'">
-        <v-toolbar-title>Stormwind Bank</v-toolbar-title>
-    </span>
+        <span v-show="$router.currentRoute.name == 'home'">
+            <v-toolbar-title>Stormwind Bank</v-toolbar-title>
+        </span>
 
-    <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
 
-    <span
-        v-if="!loggedIn"
-    >
-        <v-btn 
-            :to="{ name: 'login' }"
-            text
+        <span
+            v-if="!loggedIn"
         >
-            Login
-        </v-btn>
-
-        <v-btn 
-            :to="{ name: 'register' }"
-            text
-        >
-            Register
-        </v-btn>
-    </span>
-    <span v-else>
-        <v-menu offset-y>
-        <template v-slot:activator="{ on }">
-            <v-btn
-                v-on="on"
-                icon
+            <v-btn 
+                :to="{ name: 'login' }"
+                text
             >
-                <v-icon>mdi-dots-vertical</v-icon>
+                Login
             </v-btn>
-        </template>
-        <v-list>
-            <v-list-item
-                @click="$router.push({ name: 'dashboard' })"
-            >
-                <v-list-item-title>Dashboard</v-list-item-title>
-            </v-list-item>
-            <v-list-item
-                @click="logout"
-            >
-                <v-list-item-title>Logout</v-list-item-title>
-            </v-list-item>
-        </v-list>
-        </v-menu>
-    </span>
+        </span>
+        <span 
+            v-else
+        >
+            <v-menu offset-y>
+            <template v-slot:activator="{ on }">
+                <v-btn
+                    v-on="on"
+                    icon
+                >
+                    <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+            </template>
+            <v-list>
+                <v-list-item
+                    @click="$router.push({ name: 'dashboard' })"
+                >
+                    <v-list-item-title>Dashboard</v-list-item-title>
+                </v-list-item>
+                <v-list-item
+                    @click="logout"
+                >
+                    <v-list-item-title>Logout</v-list-item-title>
+                </v-list-item>
+            </v-list>
+            </v-menu>
+        </span>
 
     </v-app-bar>
 </template>
