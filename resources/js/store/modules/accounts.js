@@ -1,15 +1,16 @@
 import axios from 'axios'
-// import router from '../../router'
 import { url } from '../url'
 
 const state = {
     accounts: [],
     account: {},
+    form: {
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+    },
     dialog: false,
-    snackbar: {
-        toggle: false,
-        text: 'Text for snackbar',
-    }
 }
 
 const getters = {
@@ -20,9 +21,15 @@ const getters = {
 const mutations = {
     setAccounts: (state, accounts) => state.accounts = accounts, 
     setAccount: (state, account) => state.account = account,
-    setDialog: state => state.dialog = !state.dialog,
-    setSnackbarToggle: state => state.snackbar.toggle = !state.snackbar.toggle,
-    setSnackbarText: (state, text) => state.snackbar.text = text,
+    toggleCreateDialog: state => state.dialog = !state.dialog,
+    clearForm: state => {
+        state.form = {
+            name: '',
+            email: '',
+            password: '',
+            password_confirmation: '',
+        }
+    },
 }
 
 const actions = {
@@ -59,26 +66,26 @@ const actions = {
      * 
      * @param { Object } teller 
      */
-    async addAccount({ commit, dispatch, rootState }, account) {
+    async addAccount({ state, commit, dispatch, rootState }, account) {
         try {
             const access_token = rootState.token
             const res = await axios.post(`${url}/api/accounts`, {
-                name: account.name,
-                email: account.email,
-                password: account.password,
-                password_confirmation: account.password,
+                name: state.form.name,
+                email: state.form.email,
+                password: state.form.password,
+                password_confirmation: state.form.password,
             }, { headers: { 'Authorization': `Bearer ${access_token}` } })
 
             console.log('[accounts] addAcount()', res.data)
             dispatch('fetchAccounts')
-            commit('setDialog')
-            commit('setSnackbarText', 'An Account has been added successfully!')
-            commit('setSnackbarToggle')
+            commit('toggleCreateDialog')
+            commit('setSnackbarText', 'An Account was added successfully.')
+            commit('toggleSnackbar')
+            commit('clearForm')
         } catch (err) {
             console.log(err.response)
-            commit('setSnackbarText', 'An Account was not added.')
-            commit('setSnackbarToggle')
-            commit('setDialog')
+            commit('setSnackbarText', 'The attempt to add an Account failed.')
+            commit('toggleSnackbar')
         }
     },
 

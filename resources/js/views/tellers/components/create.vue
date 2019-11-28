@@ -1,6 +1,6 @@
 <template>
     <v-dialog
-        v-model="$store.state.accounts.dialog"
+        v-model="$store.state.tellers.dialog"
         width="500"
         >
         <template v-slot:activator="{ on }">
@@ -10,7 +10,7 @@
                 color="success"
             >
                 <v-icon>mdi-plus</v-icon>
-                Add Account 
+                Add teller 
             </v-btn>
         </template>
 
@@ -18,33 +18,33 @@
             <v-card-title
                 primary-title
             >
-                Add New Account
+                Add New Teller
             </v-card-title>
 
             <v-card-text>
                 <v-form>
                     <v-container>
                         <v-text-field
-                            v-model="$store.state.accounts.form.name"
+                            v-model="teller.name"
                             label="Name"
                             required
                             placeholder="John Doe"
                         ></v-text-field>
                         <v-text-field
-                            v-model="$store.state.accounts.form.email"
+                            v-model="teller.email"
                             label="E-Mail Address"
                             required
                             placeholder="john.doe@gmail.com"
                             type="email"
                         ></v-text-field>
                         <v-text-field
-                            v-model="$store.state.accounts.form.password"
+                            v-model="teller.password"
                             label="Password"
                             required
                             type="password"
                         ></v-text-field>
                         <v-text-field
-                            v-model="$store.state.accounts.form.password_confirmation"
+                            v-model="teller.password_confirmation"
                             label="Confirm Password"
                             required
                             type="password"
@@ -59,7 +59,7 @@
             <v-spacer></v-spacer>
             <v-btn
                 color="primary"
-                @click="addAccount"
+                @click="submitForm"
             >
                 Submit
             </v-btn>
@@ -72,6 +72,21 @@
 import { mapActions } from 'vuex'
 
 export default {
-    methods: mapActions(['addAccount']),
+    data: () => ({
+        teller: {
+            name: '',
+            email: '',
+            password: '',
+            password_confirmation: '',
+        },
+    }),
+
+    methods: {
+        submitForm() {
+            this.addTeller(this.teller)
+        },
+        
+        ...mapActions(['addTeller']),
+    },
 }
 </script>

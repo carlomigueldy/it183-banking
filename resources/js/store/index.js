@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import snackbar from './modules/snackbar'
 import appbar from './modules/appbar'
 import auth from './modules/auth'
 import accounts from './modules/accounts'
@@ -9,6 +10,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
+        snackbar,
         appbar,
         auth,
         accounts,

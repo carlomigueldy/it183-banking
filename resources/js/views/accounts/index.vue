@@ -43,18 +43,16 @@
             </v-data-table>
         </v-card>
 
-        <Snackbar />
     </v-content>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import CreateAccount from './components/create'
-import Snackbar from './components/snackbar'
 
 export default {
     name: 'accounts',
-    components: { CreateAccount, Snackbar },
+    components: { CreateAccount },
     
     data: () => ({
         search: '',

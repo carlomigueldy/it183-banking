@@ -16,18 +16,22 @@
                 size="64">
             </v-progress-circular>
         </v-overlay>
+
+        <Snackbar />
     </v-app>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
+import Snackbar from './components/Snackbar'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
     components: {
         Sidebar,
         Navbar,
+        Snackbar,
     },
     computed: mapGetters(['loggedIn', 'isLoading']),
     methods: mapActions(['checkAuth']),
