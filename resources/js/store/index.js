@@ -5,6 +5,7 @@ import appbar from './modules/appbar'
 import auth from './modules/auth'
 import accounts from './modules/accounts'
 import tellers from './modules/tellers'
+import transactions from './modules/transactions'
 
 Vue.use(Vuex)
 
@@ -15,5 +16,6 @@ export default new Vuex.Store({
         auth,
         accounts,
         tellers,
+        transactions,
     }
 })

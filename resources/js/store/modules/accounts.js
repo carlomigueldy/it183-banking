@@ -16,6 +16,10 @@ const state = {
 const getters = {
     getAccounts: state => state.accounts,
     getAccount: state => state.account,
+    getAccountNumbers: state => {
+        const accountNumbers = state.accounts.map(val => val.account.account_number)
+        return accountNumbers
+    }
 }
 
 const mutations = {
@@ -87,7 +91,7 @@ const actions = {
      */
     async addAccount({ state, commit, dispatch, rootState }, account) {
         try {
-            const access_token = rootState.token
+            const access_token = rootState.auth.token
             const res = await axios.post(`${url}/api/accounts`, {
                 name: state.form.name,
                 email: state.form.email,
@@ -122,6 +126,22 @@ const actions = {
 
             console.log('[accounts] deleteAccount()', res.data)
             dispatch('fetchAccounts')
+        } catch (err) {
+            console.log(err.response)
+        }
+    },
+    
+    async userWithdrawCash({ rootState, dispatch }, form) {
+        const access_token = rootState.auth.token
+        const user = rootState.auth.user
+        try {
+            const res = await axios.post(`${url}/api/accounts/withdraw`, {
+                amount: form.amount,
+                user_id: user.id,
+            }, { headers: { 'Authorization': `Bearer ${access_token}` } })
+
+            console.log('userWithdrawCash()', res.data)
+            dispatch('getAuthUser', { root: true })
         } catch (err) {
             console.log(err.response)
         }

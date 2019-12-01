@@ -25,5 +25,7 @@ Route::prefix('auth')->group(function() {
 });
 
 Route::apiResource('tellers', 'TellerController');
-Route::post('accounts/checkAccount', 'AccountController@checkAccount');
+Route::post('accounts/withdraw', 'AccountController@withdraw');
 Route::apiResource('accounts', 'AccountController');
+Route::post('deposit', 'TransactionController@deposit');
+Route::post('withdraw', 'TransactionController@withdraw');

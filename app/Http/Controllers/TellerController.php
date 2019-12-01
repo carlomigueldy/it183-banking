@@ -27,7 +27,12 @@ class TellerController extends Controller
      */
     public function show($id)
     {
-        // Code
+        $teller = User::findOrFail($id);
+        $teller->account_transactions;
+
+        return response()->json([
+            'teller' => $teller,
+        ]);
     }
 
     /**
@@ -55,14 +60,6 @@ class TellerController extends Controller
             ],
             'message' => 'A new Teller was created.',
         ]);
-    }
-
-    /**
-     * Updates a Teller info.
-     */
-    public function update(Request $request, $id)
-    {
-        // Code
     }
 
     /**

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Account;
 use App\Transaction;
+use App\AccountTransaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -18,17 +20,51 @@ class TransactionController extends Controller
     public function deposit(Request $request)
     {
         $this->validate($request, [
-            'amount_deposit' => 'required',
+            'account_number' => 'required',
             'user_id' => 'required',
-            'account_id' => 'required',
+            'amount' => 'required',
         ]);
 
-        $accountTransaction = AccountTransaction::where('user_id', $request->user_id)
-        ->where('account_id', $request->account_id)
-        ->first();
+        $account = Account::where('account_number', $request->account_number)->first();
+        $accountTransaction = AccountTransaction::where('user_id', $request->user_id)->where('account_id', $account->id)->first();
 
-        if ($accountTransaction) {
+        if ($accountTransaction == true) {
+            $transaction = Transaction::create([
+                'account_transaction_id' => $accountTransaction->id,
+                'amount_deposit' => $request->amount,
+                'amount_withdraw' => 0,
+            ]);
 
+            if ($transaction) {
+                $account->balance += $request->amount;
+                $account->save();
+            }
+
+            return response()->json([
+                'message' => 'Successfully deposited with an amount of ',
+                'cond' => 'if',
+            ]);
+        } else {
+            $accountTransaction = AccountTransaction::create([
+                'user_id' => $request->user_id,
+                'account_id' => $account->id,
+            ]);
+
+            $transaction = Transaction::create([
+                'account_transaction_id' => $accountTransaction->id,
+                'amount_deposit' => $request->amount,
+                'amount_withdraw' => 0,
+            ]);
+
+            if ($transaction) {
+                $account->balance += $request->amount;
+                $account->save();
+            }
+
+            return response()->json([
+                'new_balance' => $account->balance,
+                'cond' => 'else',
+            ]);
         }
     }
 
@@ -38,10 +74,54 @@ class TransactionController extends Controller
      * 
      * @return message
      */
-    public function withdraw()
+    public function withdraw(Request $request)
     {
         $this->validate($request, [
-            'amount_withdraw' => 'required',
+            'account_number' => 'required',
+            'user_id' => 'required',
+            'amount' => 'required',
         ]);
+
+        $account = Account::where('account_number', $request->account_number)->first();
+        $accountTransaction = AccountTransaction::where('user_id', $request->user_id)->where('account_id', $account->id)->first();
+
+        if ($accountTransaction == true) {
+            $transaction = Transaction::create([
+                'account_transaction_id' => $accountTransaction->id,
+                'amount_withdraw' => $request->amount,
+                'amount_deposit' => 0,
+            ]);
+
+            if ($transaction) {
+                $account->balance -= $request->amount;
+                $account->save();
+            }
+
+            return response()->json([
+                'message' => 'Amount withdrawn.',
+                'cond' => 'if',
+            ]);
+        } else {
+            $accountTransaction = AccountTransaction::create([
+                'user_id' => $request->user_id,
+                'account_id' => $account->id,
+            ]);
+
+            $transaction = Transaction::create([
+                'account_transaction_id' => $accountTransaction->id,
+                'amount_withdraw' => $request->amount,
+                'amount_deposit' => 0,
+            ]);
+
+            if ($transaction) {
+                $account->balance -= $request->amount;
+                $account->save();
+            }
+
+            return response()->json([
+                'new_balance' => $account->balance,
+                'cond' => 'else',
+            ]);
+        }
     }
 }

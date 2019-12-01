@@ -61,6 +61,7 @@ class AuthController extends Controller
         return response()->json([
             'user' => auth()->user(),
             'role' => auth()->user()->role,
+            'account' => auth()->user()->account ? auth()->user()->account : 'N/A', 
         ]);
     }
 

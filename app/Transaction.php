@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    protected $fillabe = [
+    protected $fillable = [
         'account_transaction_id',
         'amount_withdraw',
         'amount_deposit',

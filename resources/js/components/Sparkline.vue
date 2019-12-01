@@ -1,6 +1,7 @@
 <template>
     <v-card
         class="mx-auto text-center"
+        height="100%"
     >
         <v-card-text>
             <v-sheet color="white">

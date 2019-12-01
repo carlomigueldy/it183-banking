@@ -2211,7 +2211,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Sidebar',
@@ -2239,6 +2238,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2602,6 +2602,88 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _components_Sparkline__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Sparkline */ "./resources/js/components/Sparkline.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2659,14 +2741,22 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     "app-sparkline": _components_Sparkline__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['auth']),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['auth', 'authRole']),
   data: function data() {
     return {
+      amount: '',
       withdrawals: [1500, 2500, 300, 200, 2400],
       deposits: [5000, 4500, 15500, 1500, 500],
       accounts: [40, 5, 22, 2, 10, 80]
     };
-  }
+  },
+  methods: _objectSpread({
+    withdraw: function withdraw() {
+      this.userWithdrawCash({
+        amount: this.amount
+      });
+    }
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['userWithdrawCash']))
 });
 
 /***/ }),
@@ -2845,6 +2935,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2856,6 +2951,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       search: '',
       headers: [{
+        text: 'Avatar',
+        align: 'center',
+        sortable: false,
+        value: 'avatar'
+      }, {
         text: 'Name',
         align: 'left',
         sortable: true,
@@ -2896,6 +2996,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2904,8 +3011,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'teller'
+  name: 'teller',
+  data: function data() {
+    return {
+      headers: [{
+        text: 'Account Number',
+        align: 'left',
+        sortable: true,
+        value: 'getTeller.teller.account_transactions.account_id'
+      }]
+    };
+  },
+  created: function created() {
+    this.fetchTeller(this.$route.params.id);
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getTeller']),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchTeller']))
 });
 
 /***/ }),
@@ -2969,6 +3112,68 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      amount: '',
+      account_number: ''
+    };
+  },
+  created: function created() {
+    this.fetchAccounts();
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getAccountNumbers']),
+  methods: _objectSpread({
+    deposit: function deposit() {
+      this.depositCash({
+        amount: this.amount,
+        account_number: this.account_number
+      });
+    }
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchAccounts', 'depositCash']))
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/transactions/withdraw.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/transactions/withdraw.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2994,18 +3199,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      amount: 0.00,
+      amount: '',
       account_number: ''
     };
   },
-  created: function created() {// this.fetchAccounts()
+  created: function created() {
+    this.fetchAccounts();
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getAccounts', 'getAccount'])),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getAccountNumbers']),
   methods: _objectSpread({
-    check: function check() {
-      this.checkAccount(this.account_number);
+    withdraw: function withdraw() {
+      this.withdrawCash({
+        amount: this.amount,
+        account_number: this.account_number
+      });
     }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchAccounts', 'checkAccount']))
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchAccounts', 'withdrawCash']))
 });
 
 /***/ }),
@@ -5249,24 +5458,31 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c(
-            "v-list-group",
-            {
-              attrs: { "no-action": "", "prepend-icon": "mdi-finance" },
-              scopedSlots: _vm._u([
+          _vm.authRole.name === "Manager" || _vm.authRole.name === "Teller"
+            ? _c(
+                "v-list-group",
                 {
-                  key: "activator",
-                  fn: function() {
-                    return [_c("v-list-item-title", [_vm._v("Transactions")])]
-                  },
-                  proxy: true
-                }
-              ])
-            },
-            [
-              _vm._v(" "),
-              _vm.authRole.name === "Manager" || _vm.authRole.name === "Teller"
-                ? _c(
+                  attrs: { "no-action": "", "prepend-icon": "mdi-finance" },
+                  scopedSlots: _vm._u(
+                    [
+                      {
+                        key: "activator",
+                        fn: function() {
+                          return [
+                            _c("v-list-item-title", [_vm._v("Transactions")])
+                          ]
+                        },
+                        proxy: true
+                      }
+                    ],
+                    null,
+                    false,
+                    1067616336
+                  )
+                },
+                [
+                  _vm._v(" "),
+                  _c(
                     "v-list-item",
                     {
                       attrs: { dense: "", to: { name: "transaction.deposit" } }
@@ -5285,11 +5501,9 @@ var render = function() {
                       )
                     ],
                     1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.authRole.name === "Manager" || _vm.authRole.name === "Teller"
-                ? _c(
+                  ),
+                  _vm._v(" "),
+                  _c(
                     "v-list-item",
                     {
                       attrs: { dense: "", to: { name: "transaction.withdraw" } }
@@ -5309,10 +5523,10 @@ var render = function() {
                     ],
                     1
                   )
-                : _vm._e()
-            ],
-            1
-          ),
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
           _vm.authRole.name === "Manager"
             ? _c(
@@ -5444,7 +5658,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-card",
-    { staticClass: "mx-auto text-center" },
+    { staticClass: "mx-auto text-center", attrs: { height: "100%" } },
     [
       _c(
         "v-card-text",
@@ -5989,136 +6203,384 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-content",
-    [
-      _c(
-        "v-row",
-        [
-          _c(
-            "v-col",
-            { attrs: { cols: "8" } },
-            [
-              _c(
-                "v-card",
-                { attrs: { height: "100%" } },
-                [
-                  _c(
-                    "v-card-title",
-                    [
-                      _c("v-icon", [_vm._v("mdi-view-dashboard-outline")]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-3" }, [_vm._v("Dashboard")])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("v-card-text", [
-                    _vm._v(
-                      "Welcome to the Stormwind Banking App, " +
-                        _vm._s(_vm.auth.name) +
-                        "."
+  return _c("v-content", [
+    _vm.authRole.name !== "Account Holder"
+      ? _c(
+          "div",
+          [
+            _c(
+              "v-row",
+              [
+                _c(
+                  "v-col",
+                  { attrs: { cols: "8" } },
+                  [
+                    _c(
+                      "v-card",
+                      { attrs: { height: "100%" } },
+                      [
+                        _c(
+                          "v-card-title",
+                          [
+                            _c("v-icon", [
+                              _vm._v("mdi-view-dashboard-outline")
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "ml-3" }, [
+                              _vm._v("Dashboard")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("v-card-text", [
+                          _vm._v(
+                            "Welcome to the Stormwind Banking App, " +
+                              _vm._s(_vm.auth.name) +
+                              "."
+                          )
+                        ])
+                      ],
+                      1
                     )
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "4" } },
-            [
-              _c(
-                "v-card",
-                [
-                  _c(
-                    "v-card-title",
-                    [
-                      _c("v-icon", [_vm._v("mdi-calendar")]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-3" }, [_vm._v("Calendar")])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-sheet",
-                    [
-                      _c("v-calendar", {
-                        attrs: {
-                          type: "month",
-                          now: "2019-01-08",
-                          value: "2019-01-08"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-row",
-        [
-          _c(
-            "v-col",
-            [
-              _c("app-sparkline", {
-                attrs: {
-                  title: "Daily Withdrawals",
-                  linecolor: "rgba(230, 52, 52, .7)",
-                  prefix: "$",
-                  value: _vm.withdrawals
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            [
-              _c("app-sparkline", {
-                attrs: {
-                  title: "Daily Deposits",
-                  linecolor: "rgba(81, 205, 62, .7)",
-                  prefix: "$",
-                  value: _vm.deposits
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            [
-              _c("app-sparkline", {
-                attrs: {
-                  title: "New Accounts per Month",
-                  linecolor: "rgba(13, 70, 161, .7)",
-                  value: _vm.accounts
-                }
-              })
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-col",
+                  { attrs: { cols: "4" } },
+                  [
+                    _c(
+                      "v-card",
+                      [
+                        _c(
+                          "v-card-title",
+                          [
+                            _c("v-icon", [_vm._v("mdi-calendar")]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "ml-3" }, [
+                              _vm._v("Calendar")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-sheet",
+                          [
+                            _c("v-calendar", {
+                              attrs: {
+                                type: "month",
+                                now: "2019-01-08",
+                                value: "2019-01-08"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "v-row",
+              [
+                _c(
+                  "v-col",
+                  [
+                    _c("app-sparkline", {
+                      attrs: {
+                        title: "Daily Withdrawals",
+                        linecolor: "rgba(230, 52, 52, .7)",
+                        prefix: "$",
+                        value: _vm.withdrawals
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-col",
+                  [
+                    _c("app-sparkline", {
+                      attrs: {
+                        title: "Daily Deposits",
+                        linecolor: "rgba(81, 205, 62, .7)",
+                        prefix: "$",
+                        value: _vm.deposits
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-col",
+                  [
+                    _c("app-sparkline", {
+                      attrs: {
+                        title: "New Accounts per Month",
+                        linecolor: "rgba(13, 70, 161, .7)",
+                        value: _vm.accounts
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      : _c(
+          "div",
+          [
+            _c(
+              "v-row",
+              [
+                _c(
+                  "v-col",
+                  [
+                    _c(
+                      "v-card",
+                      [
+                        _c(
+                          "v-card-title",
+                          [
+                            _c("v-icon", [
+                              _vm._v("mdi-view-dashboard-outline")
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "ml-3" }, [
+                              _vm._v("Dashboard")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("v-card-text", [
+                          _c("div", { staticClass: "text-left" }, [
+                            _vm._v("Welcome back, "),
+                            _c("span", { staticClass: "headline" }, [
+                              _vm._v(_vm._s(_vm.auth.name))
+                            ]),
+                            _vm._v(".")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "text-center" }, [
+                            _c("div", { staticClass: "headline" }, [
+                              _vm._v(
+                                "\n                                Your current balance is \n                                "
+                              ),
+                              _c(
+                                "div",
+                                { staticClass: "display-3 blue--text" },
+                                [
+                                  _vm._v(
+                                    "$ " + _vm._s(_vm.auth.account.balance)
+                                  )
+                                ]
+                              )
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "v-card-actions",
+                          [
+                            _c("v-text-field", {
+                              attrs: {
+                                label: "Withdraw Amount",
+                                rounded: "",
+                                filled: "",
+                                type: "number",
+                                min: "0",
+                                step: "0.01"
+                              },
+                              model: {
+                                value: _vm.amount,
+                                callback: function($$v) {
+                                  _vm.amount = $$v
+                                },
+                                expression: "amount"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: {
+                                  depressed: "",
+                                  large: "",
+                                  rounded: ""
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.withdraw()
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            Withdraw\n                        "
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "v-row",
+              [
+                _c(
+                  "v-col",
+                  { attrs: { lg: "3", md: "4", sm: "6" } },
+                  [
+                    _c(
+                      "v-card",
+                      { staticClass: "text-center", attrs: { height: "100%" } },
+                      [
+                        _c(
+                          "v-card-text",
+                          [
+                            _c(
+                              "v-icon",
+                              { attrs: { color: "green", size: "64" } },
+                              [_vm._v("mdi-piggy-bank")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "headline" }, [
+                              _vm._v("Savings")
+                            ])
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-col",
+                  { attrs: { lg: "3", md: "4", sm: "6" } },
+                  [
+                    _c(
+                      "v-card",
+                      { staticClass: "text-center", attrs: { height: "100%" } },
+                      [
+                        _c(
+                          "v-card-text",
+                          [
+                            _c(
+                              "v-icon",
+                              {
+                                attrs: { color: "orange darken-4", size: "64" }
+                              },
+                              [_vm._v("mdi-bitcoin")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "headline" }, [
+                              _vm._v("Bitcoin")
+                            ])
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-col",
+                  { attrs: { lg: "3", md: "4", sm: "6" } },
+                  [
+                    _c(
+                      "v-card",
+                      { staticClass: "text-center", attrs: { height: "100%" } },
+                      [
+                        _c(
+                          "v-card-text",
+                          [
+                            _c(
+                              "v-icon",
+                              {
+                                attrs: { color: "yellow darken-1", size: "64" }
+                              },
+                              [_vm._v("mdi-coins")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "headline" }, [
+                              _vm._v("Coins")
+                            ])
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-col",
+                  { attrs: { lg: "3", md: "4", sm: "6" } },
+                  [
+                    _c(
+                      "v-card",
+                      { staticClass: "text-center", attrs: { height: "100%" } },
+                      [
+                        _c(
+                          "v-card-text",
+                          [
+                            _c(
+                              "v-icon",
+                              { attrs: { color: "red darken-1", size: "64" } },
+                              [_vm._v("mdi-finance")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "headline" }, [
+                              _vm._v("Finance")
+                            ])
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -6404,6 +6866,17 @@ var render = function() {
             },
             scopedSlots: _vm._u([
               {
+                key: "item.avatar",
+                fn: function(ref) {
+                  var item = ref.item
+                  return [
+                    _c("v-avatar", [
+                      _c("img", { attrs: { src: "/img/default/default.png" } })
+                    ])
+                  ]
+                }
+              },
+              {
                 key: "item.actions",
                 fn: function(ref) {
                   var item = ref.item
@@ -6490,9 +6963,67 @@ var render = function() {
   return _c(
     "v-content",
     [
-      _c("v-card", [
-        _vm._v("\n        Teller ID " + _vm._s(_vm.$route.params.id) + "\n    ")
-      ])
+      _c(
+        "v-row",
+        [
+          _c(
+            "v-col",
+            { attrs: { cols: "4" } },
+            [
+              _c(
+                "v-card",
+                { attrs: { height: "100%" } },
+                [
+                  _c("v-card-text", [
+                    _c(
+                      "div",
+                      { staticClass: "text-center" },
+                      [
+                        _c(
+                          "v-avatar",
+                          { staticClass: "mb-3", attrs: { size: "144" } },
+                          [
+                            _c("img", {
+                              attrs: { src: "/img/default/default.png" }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "headline" }, [
+                          _vm._v(_vm._s(_vm.getTeller.teller.name))
+                        ])
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "8" } },
+            [
+              _vm._v(
+                "\n            " + _vm._s(_vm.getTeller) + "\n            "
+              ),
+              _c("v-data-table", {
+                staticClass: "elevation-1",
+                attrs: {
+                  headers: _vm.headers,
+                  items: _vm.getTeller.teller.account_transactions,
+                  "items-per-page": 5
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
@@ -6526,141 +7057,85 @@ var render = function() {
         "v-card",
         [
           _c(
-            "v-card-title",
-            [
-              _c("v-icon", [_vm._v("mdi-bank-transfer-out")]),
-              _vm._v(" "),
-              _c("span", { staticClass: "ml-3" }, [_vm._v("Deposit")])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
             "v-card-text",
             [
               _c(
-                "v-row",
+                "div",
+                { staticClass: "text-center mb-5" },
                 [
-                  _c(
-                    "v-col",
-                    { attrs: { cols: "5" } },
-                    [
-                      _c(
-                        "v-form",
-                        [
-                          _c(
-                            "v-row",
-                            [
-                              _c(
-                                "v-col",
-                                { attrs: { cols: "8" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      label: "Account Number",
-                                      placeholder: "e.g., 1574910360",
-                                      filled: "",
-                                      rounded: ""
-                                    },
-                                    model: {
-                                      value: _vm.account_number,
-                                      callback: function($$v) {
-                                        _vm.account_number = $$v
-                                      },
-                                      expression: "account_number"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c("v-col", { attrs: { cols: "4" } }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "pt-5" },
-                                  [
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: { depressed: "", rounded: "" },
-                                        on: { click: _vm.check }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                        Check\n                                    "
-                                        )
-                                      ]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _vm.getAccount.name
-                        ? _c("div", [
-                            _c("div", [
-                              _vm._v(
-                                "\n                            Account Number: "
-                              ),
-                              _c("span", { staticClass: "subtitle-2" }, [
-                                _vm._v(_vm._s(_vm.getAccount.account_number))
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _vm._v("\n                            Name: "),
-                              _c("span", { staticClass: "subtitle-2" }, [
-                                _vm._v(_vm._s(_vm.getAccount.name))
-                              ])
-                            ])
-                          ])
-                        : _vm._e()
-                    ],
-                    1
-                  ),
+                  _c("v-icon", { attrs: { size: "150" } }, [
+                    _vm._v("mdi-bank-transfer-in")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "display-2" }, [_vm._v("Deposit")])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-form",
+                [
+                  _c("v-autocomplete", {
+                    attrs: {
+                      label: "Account Number",
+                      placeholder: "e.g., 1574910360",
+                      items: _vm.getAccountNumbers,
+                      filled: "",
+                      rounded: ""
+                    },
+                    model: {
+                      value: _vm.account_number,
+                      callback: function($$v) {
+                        _vm.account_number = $$v
+                      },
+                      expression: "account_number"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: {
+                      label: "Enter Amount",
+                      "prepend-icon": "mdi-currency-usd",
+                      type: "number",
+                      min: "0",
+                      step: "0.01",
+                      filled: "",
+                      rounded: "",
+                      placeholder: "Enter an amount"
+                    },
+                    model: {
+                      value: _vm.amount,
+                      callback: function($$v) {
+                        _vm.amount = $$v
+                      },
+                      expression: "amount"
+                    }
+                  }),
                   _vm._v(" "),
                   _c(
-                    "v-col",
-                    { attrs: { cols: "7" } },
+                    "div",
+                    { staticClass: "text-center" },
                     [
-                      _c("div", { staticClass: "text-center" }, [
-                        _c("div", [_vm._v("Amount to Deposit")]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "display-3 font-weight-bold" },
-                          [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(_vm.amount ? "$ " + _vm.amount : "") +
-                                "\n                        "
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: {
-                          label: "Enter Amount",
-                          type: "number",
-                          min: "0",
-                          step: "0.01",
-                          placeholder: "Enter an amount"
-                        },
-                        model: {
-                          value: _vm.amount,
-                          callback: function($$v) {
-                            _vm.amount = $$v
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            color: "primary",
+                            depressed: "",
+                            rounded: ""
                           },
-                          expression: "amount"
-                        }
-                      })
+                          on: {
+                            click: function($event) {
+                              return _vm.deposit()
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Deposit Cash\n                    "
+                          )
+                        ]
+                      )
                     ],
                     1
                   )
@@ -6706,20 +7181,94 @@ var render = function() {
         "v-card",
         [
           _c(
-            "v-card-title",
+            "v-card-text",
             [
-              _c("v-icon", [_vm._v("mdi-bank-transfer-out")]),
+              _c(
+                "div",
+                { staticClass: "text-center mb-5" },
+                [
+                  _c("v-icon", { attrs: { size: "150" } }, [
+                    _vm._v("mdi-bank-transfer-out")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "display-2" }, [_vm._v("Withdraw")])
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("span", { staticClass: "ml-3" }, [_vm._v("Withdraw")])
+              _c(
+                "v-form",
+                [
+                  _c("v-autocomplete", {
+                    attrs: {
+                      label: "Account Number",
+                      placeholder: "e.g., 1574910360",
+                      items: _vm.getAccountNumbers,
+                      filled: "",
+                      rounded: ""
+                    },
+                    model: {
+                      value: _vm.account_number,
+                      callback: function($$v) {
+                        _vm.account_number = $$v
+                      },
+                      expression: "account_number"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: {
+                      label: "Enter Amount",
+                      "prepend-icon": "mdi-currency-usd",
+                      type: "number",
+                      min: "0",
+                      step: "0.01",
+                      filled: "",
+                      rounded: "",
+                      placeholder: "Enter an amount"
+                    },
+                    model: {
+                      value: _vm.amount,
+                      callback: function($$v) {
+                        _vm.amount = $$v
+                      },
+                      expression: "amount"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "text-center" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            color: "primary",
+                            depressed: "",
+                            rounded: ""
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.withdraw()
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Withdraw Cash\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ],
             1
-          ),
-          _vm._v(" "),
-          _c("v-card-text", [
-            _vm._v(
-              "\n            Withdraw an amount for an Account Holder\n        "
-            )
-          ])
+          )
         ],
         1
       )
@@ -60802,6 +61351,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth.js");
 /* harmony import */ var _modules_accounts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/accounts */ "./resources/js/store/modules/accounts.js");
 /* harmony import */ var _modules_tellers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/tellers */ "./resources/js/store/modules/tellers.js");
+/* harmony import */ var _modules_transactions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/transactions */ "./resources/js/store/modules/transactions.js");
+
 
 
 
@@ -60816,7 +61367,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
     appbar: _modules_appbar__WEBPACK_IMPORTED_MODULE_3__["default"],
     auth: _modules_auth__WEBPACK_IMPORTED_MODULE_4__["default"],
     accounts: _modules_accounts__WEBPACK_IMPORTED_MODULE_5__["default"],
-    tellers: _modules_tellers__WEBPACK_IMPORTED_MODULE_6__["default"]
+    tellers: _modules_tellers__WEBPACK_IMPORTED_MODULE_6__["default"],
+    transactions: _modules_transactions__WEBPACK_IMPORTED_MODULE_7__["default"]
   }
 }));
 
@@ -60856,6 +61408,12 @@ var getters = {
   },
   getAccount: function getAccount(state) {
     return state.account;
+  },
+  getAccountNumbers: function getAccountNumbers(state) {
+    var accountNumbers = state.accounts.map(function (val) {
+      return val.account.account_number;
+    });
+    return accountNumbers;
   }
 };
 var mutations = {
@@ -61005,7 +61563,7 @@ var actions = {
           case 0:
             state = _ref4.state, commit = _ref4.commit, dispatch = _ref4.dispatch, rootState = _ref4.rootState;
             _context4.prev = 1;
-            _access_token2 = rootState.token;
+            _access_token2 = rootState.auth.token;
             _context4.next = 5;
             return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/accounts"), {
               name: state.form.name,
@@ -61083,6 +61641,47 @@ var actions = {
         }
       }
     }, null, null, [[1, 9]]);
+  },
+  userWithdrawCash: function userWithdrawCash(_ref6, form) {
+    var rootState, dispatch, access_token, user, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function userWithdrawCash$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            rootState = _ref6.rootState, dispatch = _ref6.dispatch;
+            access_token = rootState.auth.token;
+            user = rootState.auth.user;
+            _context6.prev = 3;
+            _context6.next = 6;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/accounts/withdraw"), {
+              amount: form.amount,
+              user_id: user.id
+            }, {
+              headers: {
+                'Authorization': "Bearer ".concat(access_token)
+              }
+            }));
+
+          case 6:
+            res = _context6.sent;
+            console.log('userWithdrawCash()', res.data);
+            dispatch('getAuthUser', {
+              root: true
+            });
+            _context6.next = 14;
+            break;
+
+          case 11:
+            _context6.prev = 11;
+            _context6.t0 = _context6["catch"](3);
+            console.log(_context6.t0.response);
+
+          case 14:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, null, null, [[3, 11]]);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -61684,6 +62283,124 @@ var actions = {
   state: state,
   getters: getters,
   mutations: mutations,
+  actions: actions
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/transactions.js":
+/*!****************************************************!*\
+  !*** ./resources/js/store/modules/transactions.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _url__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../url */ "./resources/js/store/url.js");
+
+
+
+var actions = {
+  /**
+   * Teller deposits cash into an Account Holder's balance.
+   * 
+   * @param { Object } form 
+   */
+  depositCash: function depositCash(_ref, form) {
+    var rootState, access_token, user, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function depositCash$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            rootState = _ref.rootState;
+            access_token = rootState.auth.token;
+            user = rootState.auth.user;
+            _context.prev = 3;
+            _context.next = 6;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/deposit"), {
+              account_number: form.account_number,
+              amount: form.amount,
+              user_id: user.id
+            }, {
+              headers: {
+                'Authorization': "Bearer ".concat(access_token)
+              }
+            }));
+
+          case 6:
+            res = _context.sent;
+            console.log('depositCash', res.data);
+            rootState.snackbar.text = "Cash amount $".concat(form.amount, " deposited to account number ").concat(form.account_number, ".");
+            rootState.snackbar.toggle = true;
+            _context.next = 15;
+            break;
+
+          case 12:
+            _context.prev = 12;
+            _context.t0 = _context["catch"](3);
+            console.log(_context.t0.response);
+
+          case 15:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, null, null, [[3, 12]]);
+  },
+
+  /**
+   * Withdraws an amount for an Account Holder.
+   * 
+   * @param { Object } form 
+   */
+  withdrawCash: function withdrawCash(_ref2, form) {
+    var rootState, access_token, user, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function withdrawCash$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            rootState = _ref2.rootState;
+            access_token = rootState.auth.token;
+            user = rootState.auth.user;
+            _context2.prev = 3;
+            _context2.next = 6;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/withdraw"), {
+              account_number: form.account_number,
+              amount: form.amount,
+              user_id: user.id
+            }, {
+              headers: {
+                'Authorization': "Bearer ".concat(access_token)
+              }
+            }));
+
+          case 6:
+            res = _context2.sent;
+            console.log(res.data);
+            rootState.snackbar.text = "Cash amount $".concat(form.amount, " withdrawn from account number ").concat(form.account_number, ".");
+            rootState.snackbar.toggle = true;
+            _context2.next = 15;
+            break;
+
+          case 12:
+            _context2.prev = 12;
+            _context2.t0 = _context2["catch"](3);
+            console.log(_context2.t0.response);
+
+          case 15:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, null, null, [[3, 12]]);
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
   actions: actions
 });
 
@@ -62403,15 +63120,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _withdraw_vue_vue_type_template_id_3dc8b5d6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./withdraw.vue?vue&type=template&id=3dc8b5d6& */ "./resources/js/views/transactions/withdraw.vue?vue&type=template&id=3dc8b5d6&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _withdraw_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./withdraw.vue?vue&type=script&lang=js& */ "./resources/js/views/transactions/withdraw.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _withdraw_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _withdraw_vue_vue_type_template_id_3dc8b5d6___WEBPACK_IMPORTED_MODULE_0__["render"],
   _withdraw_vue_vue_type_template_id_3dc8b5d6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -62425,6 +63144,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/views/transactions/withdraw.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/transactions/withdraw.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/views/transactions/withdraw.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_withdraw_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./withdraw.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/transactions/withdraw.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_withdraw_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

@@ -42,6 +42,7 @@
 
             <v-list-group
                 no-action
+                v-if="authRole.name === 'Manager' || authRole.name === 'Teller'"
                 prepend-icon="mdi-finance"
             >
                 <template v-slot:activator>
@@ -50,7 +51,6 @@
 
                 <v-list-item 
                     dense
-                    v-if="authRole.name === 'Manager' || authRole.name === 'Teller'"
                     :to="{ name: 'transaction.deposit' }"
                     >
                     <v-list-item-icon>
@@ -64,7 +64,6 @@
 
                 <v-list-item 
                     dense
-                    v-if="authRole.name === 'Manager' || authRole.name === 'Teller'"
                     :to="{ name: 'transaction.withdraw' }"
                     >
                     <v-list-item-icon>
