@@ -4,6 +4,13 @@ import { url } from '../url'
 const state = {
     tellers: [],
     teller: {},
+    form: {
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+    },
+    dialog: false,
 }
 
 const getters = {
@@ -14,6 +21,15 @@ const getters = {
 const mutations = {
     setTellers: (state, tellers) => state.tellers = tellers,
     setTeller: (state, teller) => state.teller = teller,
+    toggleTellerCreateDialog: state => state.dialog = !state.dialog,
+    clearForm: state => {
+        state.form = {
+            name: '',
+            email: '',
+            password: '',
+            password_confirmation: '',
+        }
+    },
 }
 
 const actions = {
@@ -54,19 +70,26 @@ const actions = {
      * 
      * @param { Object } teller 
      */
-    async addTeller({ dispatch }, teller) {
+    async addTeller({ state, commit, dispatch, rootState }, teller) {
         try {
+            const access_token = rootState.token
             const res = await axios.post(`${url}/api/tellers`, {
-                name: teller.name,
-                email: teller.email,
-                password: teller.password,
-                password_confirmation: teller.password,
+                name: state.form.name,
+                email: state.form.email,
+                password: state.form.password,
+                password_confirmation: state.form.password,
             }, { headers: { 'Authorization': `Bearer ${access_token}` } })
 
             console.log('[tellers] addTeller()', res.data)
             dispatch('fetchTellers')
+            commit('toggleTellerCreateDialog')
+            commit('setSnackbarText', res.data.message)
+            commit('toggleSnackbar')
+            commit('clearForm')
         } catch (err) {
             console.log(err.response)
+            commit('setSnackbarText', 'The attempt to add a Teller failed.')
+            commit('toggleSnackbar')
         }
     },
 

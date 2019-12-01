@@ -10,7 +10,7 @@
                 color="success"
             >
                 <v-icon>mdi-plus</v-icon>
-                Add teller 
+                Add Teller 
             </v-btn>
         </template>
 
@@ -25,26 +25,26 @@
                 <v-form>
                     <v-container>
                         <v-text-field
-                            v-model="teller.name"
+                            v-model="$store.state.tellers.form.name"
                             label="Name"
                             required
                             placeholder="John Doe"
                         ></v-text-field>
                         <v-text-field
-                            v-model="teller.email"
+                            v-model="$store.state.tellers.form.email"
                             label="E-Mail Address"
                             required
                             placeholder="john.doe@gmail.com"
                             type="email"
                         ></v-text-field>
                         <v-text-field
-                            v-model="teller.password"
+                            v-model="$store.state.tellers.form.password"
                             label="Password"
                             required
                             type="password"
                         ></v-text-field>
                         <v-text-field
-                            v-model="teller.password_confirmation"
+                            v-model="$store.state.tellers.form.password_confirmation"
                             label="Confirm Password"
                             required
                             type="password"
@@ -59,7 +59,7 @@
             <v-spacer></v-spacer>
             <v-btn
                 color="primary"
-                @click="submitForm"
+                @click="addTeller"
             >
                 Submit
             </v-btn>
@@ -72,21 +72,6 @@
 import { mapActions } from 'vuex'
 
 export default {
-    data: () => ({
-        teller: {
-            name: '',
-            email: '',
-            password: '',
-            password_confirmation: '',
-        },
-    }),
-
-    methods: {
-        submitForm() {
-            this.addTeller(this.teller)
-        },
-        
-        ...mapActions(['addTeller']),
-    },
+    methods: mapActions(['addTeller']),
 }
 </script>

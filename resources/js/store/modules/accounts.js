@@ -21,7 +21,7 @@ const getters = {
 const mutations = {
     setAccounts: (state, accounts) => state.accounts = accounts, 
     setAccount: (state, account) => state.account = account,
-    toggleCreateDialog: state => state.dialog = !state.dialog,
+    toggleAccountCreateDialog: state => state.dialog = !state.dialog,
     clearForm: state => {
         state.form = {
             name: '',
@@ -39,11 +39,15 @@ const actions = {
      * @return void
      */
     async fetchAccounts({ commit }, access_token) {
-        const res = await axios.get(`${url}/api/accounts`, {}, {
-            headers: { 'Authorization': `Bearer ${access_token}` }
-        })
-
-        commit('setAccounts', res.data.accounts)
+        try {
+            const res = await axios.get(`${url}/api/accounts`, {}, {
+                headers: { 'Authorization': `Bearer ${access_token}` }
+            })
+    
+            commit('setAccounts', res.data.accounts)
+        } catch (err) {
+            console.log(err.reponse)
+        }
     },
 
     /**
@@ -55,6 +59,21 @@ const actions = {
         try {
             const res = await axios.get(`${url}/api/accounts/${id}`)
 
+            commit('setAccount', res.data)
+        } catch (err) {
+            console.log('err.response', err.response)
+            console.log('err', err)
+        }
+    },
+
+    async checkAccount({ commit, rootState }, account_number) {
+        try {
+            const access_token = rootState.token
+            const res = await axios.post(`${url}/api/accounts/checkAccount`, {
+                account_number: account_number,
+            }, { headers: { 'Authorization': `Bearer ${access_token}` } })
+    
+            console.log(res.data)
             commit('setAccount', res.data)
         } catch (err) {
             console.log(err.response)
@@ -78,7 +97,7 @@ const actions = {
 
             console.log('[accounts] addAcount()', res.data)
             dispatch('fetchAccounts')
-            commit('toggleCreateDialog')
+            commit('toggleAccountCreateDialog')
             commit('setSnackbarText', 'An Account was added successfully.')
             commit('toggleSnackbar')
             commit('clearForm')

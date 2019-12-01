@@ -27,7 +27,7 @@
             </v-list-item-content>
         </v-list-item>
 
-        <v-list>
+        <v-list shaped>
             <v-list-item 
                 :to="{ name: 'dashboard' }"
                 >
@@ -39,6 +39,43 @@
                     <v-list-item-title>Dashboard</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
+
+            <v-list-group
+                no-action
+                prepend-icon="mdi-finance"
+            >
+                <template v-slot:activator>
+                    <v-list-item-title>Transactions</v-list-item-title>
+                </template>
+
+                <v-list-item 
+                    dense
+                    v-if="authRole.name === 'Manager' || authRole.name === 'Teller'"
+                    :to="{ name: 'transaction.deposit' }"
+                    >
+                    <v-list-item-icon>
+                        <v-icon>mdi-bank-transfer-in</v-icon>
+                    </v-list-item-icon>
+
+                    <v-list-item-content>
+                        <v-list-item-title>Deposit</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item 
+                    dense
+                    v-if="authRole.name === 'Manager' || authRole.name === 'Teller'"
+                    :to="{ name: 'transaction.withdraw' }"
+                    >
+                    <v-list-item-icon>
+                        <v-icon>mdi-bank-transfer-out</v-icon>
+                    </v-list-item-icon>
+
+                    <v-list-item-content>
+                        <v-list-item-title>Withdraw</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list-group>
 
             <v-list-item 
                 v-if="authRole.name === 'Manager'"

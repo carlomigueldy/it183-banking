@@ -2,7 +2,7 @@
     <v-content>
         <v-card>
             <v-card-title>
-                Accounts
+                <v-icon>mdi-account-group</v-icon> <span class="ml-3">Accounts</span>
                 <v-spacer></v-spacer>
                 <v-text-field
                     v-model="search"

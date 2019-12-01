@@ -1,16 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import home from '../views/home'
-import login from '../views/auth/login'
-import dashboard from '../views/dashboard'
-import users from '../views/users'
-import user from '../views/users/user'
+import Home from '../views/home'
+import Login from '../views/auth/login'
+import Dashboard from '../views/dashboard'
+import Users from '../views/users'
+import User from '../views/users/user'
 
-import accounts from '../views/accounts'
-import account from '../views/accounts/account'
+import Accounts from '../views/accounts'
+import Account from '../views/accounts/account'
 
-import tellers from '../views/tellers'
-import teller from '../views/tellers/teller'
+import Tellers from '../views/tellers'
+import Teller from '../views/tellers/teller'
+
+import TransactionWithdraw from '../views/transactions/withdraw'
+import TransactionDeposit from '../views/transactions/deposit'
 
 Vue.use(VueRouter)
 
@@ -20,53 +23,65 @@ export default new VueRouter({
         {
             path: '/',
             name: 'home',
-            component: home,
+            component: Home,
         },
         {
             path: '/login',
             name: 'login',
-            component: login,
+            component: Login,
         },
         {
             path: '/dashboard',
             name: 'dashboard',
-            component: dashboard,
+            component: Dashboard,
         },
 
         // Users
         {
             path: '/users',
             name: 'users',
-            component: users,
+            component: Users,
         },
         {
             path: '/users/:id',
             name: 'user',
-            component: user,
+            component: User,
         },
 
         // Tellers
         {
             path: '/tellers',
             name: 'tellers.index',
-            component: tellers,
+            component: Tellers,
         },
         {
             path: '/tellers/:id',
             name: 'tellers.show',
-            component: teller,
+            component: Teller,
         },
 
         // Accounts
         {
             path: '/accounts',
             name: 'accounts.index',
-            component: accounts,
+            component: Accounts,
         },
         {
             path: '/accounts/:id',
             name: 'accounts.show',
-            component: account,
+            component: Account,
+        },
+        
+        // Transactions
+        {
+            path: '/withdraw',
+            name: 'transaction.withdraw',
+            component: TransactionWithdraw,
+        },
+        {
+            path: '/deposit',
+            name: 'transaction.deposit',
+            component: TransactionDeposit,
         },
     ],
 })

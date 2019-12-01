@@ -25,4 +25,5 @@ Route::prefix('auth')->group(function() {
 });
 
 Route::apiResource('tellers', 'TellerController');
+Route::post('accounts/checkAccount', 'AccountController@checkAccount');
 Route::apiResource('accounts', 'AccountController');

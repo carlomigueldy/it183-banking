@@ -2,7 +2,7 @@
     <v-content>
         <v-card>
             <v-card-title>
-                Tellers
+                <v-icon>mdi-account-tie-outline</v-icon> <span class="ml-3">Tellers</span>
                 <v-spacer></v-spacer>
                 <v-text-field
                     v-model="search"
@@ -12,12 +12,7 @@
                     hide-details
                 ></v-text-field>
 
-                <v-btn 
-                    class="ml-5 mt-3"
-                    color="success">
-                    <v-icon>mdi-plus</v-icon>
-                    Add Teller
-                </v-btn>
+                <CreateTeller />
             </v-card-title>
 
             <v-data-table
@@ -49,10 +44,12 @@
 </template>
 
 <script>
+import CreateTeller from './components/create'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
     name: 'tellers',
+    components: { CreateTeller },
     data: () => ({
         search: '',
         headers: [

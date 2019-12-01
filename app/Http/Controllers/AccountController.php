@@ -22,6 +22,33 @@ class AccountController extends Controller
             'accounts' => $accounts,
         ]);
     }
+
+    /**
+     * Validates if the Account Number exists.
+     * 
+     * @return Object
+     */
+    public function checkAccount(Request $request)
+    {
+        $this->validate($request, [
+            'account_number' => 'required',
+        ]);
+        
+        try {
+            $account = Account::where('account_number', $request->account_number)->first();
+        
+            return response()->json([
+                'name' => $account->user->name,
+                'account_number' => $account->account_number,
+                'exists' => true,
+            ]);
+        } catch (Exception $error) {
+            return response()->json([
+                'error_message' => $error->getMessage(),
+                'exists' => false,
+            ]);
+        }
+    }
     
     /**
      * Display information of an Account Holder.
