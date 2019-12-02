@@ -51,6 +51,20 @@
 
                 <v-list-item 
                     dense
+                    v-if="authRole.name === 'Manager'"
+                    :to="{ name: 'transaction.logs' }"
+                    >
+                    <v-list-item-icon>
+                        <v-icon>mdi-bank-transfer-in</v-icon>
+                    </v-list-item-icon>
+
+                    <v-list-item-content>
+                        <v-list-item-title>Logs</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item 
+                    dense
                     :to="{ name: 'transaction.deposit' }"
                     >
                     <v-list-item-icon>

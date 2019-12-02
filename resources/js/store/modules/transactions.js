@@ -1,7 +1,25 @@
 import axios from 'axios'
 import { url } from '../url'
 
+const state = {
+    transactions: [],
+}
+
+const mutations = {
+    setTransactions: (state, transactions) => state.transactions = transactions,
+}
+
 const actions = {
+    async fetchTransactions({ commit }) {
+        try {
+            const res = await axios.get(`${url}/api/transactions`)
+
+            commit('setTransactions', res.data)
+        } catch (err) {
+            console.log(err.response)
+        }
+    },
+    
     /**
      * Teller deposits cash into an Account Holder's balance.
      * 
@@ -50,5 +68,7 @@ const actions = {
 }
 
 export default {
+    state,
+    mutations,
     actions,
 }

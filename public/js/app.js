@@ -2211,6 +2211,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Sidebar',
@@ -2745,7 +2759,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       amount: '',
-      withdrawals: [1500, 2500, 300, 200, 2400],
+      withdrawals: [1500, 2500, 300, 200, 2400, 200],
       deposits: [5000, 4500, 15500, 1500, 500],
       accounts: [40, 5, 22, 2, 10, 80]
     };
@@ -5481,6 +5495,29 @@ var render = function() {
                   )
                 },
                 [
+                  _vm._v(" "),
+                  _vm.authRole.name === "Manager"
+                    ? _c(
+                        "v-list-item",
+                        {
+                          attrs: { dense: "", to: { name: "transaction.logs" } }
+                        },
+                        [
+                          _c(
+                            "v-list-item-icon",
+                            [_c("v-icon", [_vm._v("mdi-bank-transfer-in")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-list-item-content",
+                            [_c("v-list-item-title", [_vm._v("Logs")])],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
                   _c(
                     "v-list-item",
@@ -61642,6 +61679,12 @@ var actions = {
       }
     }, null, null, [[1, 9]]);
   },
+
+  /**
+   * An Account Holder withdraws cash.
+   * 
+   * @param { Object } form 
+   */
   userWithdrawCash: function userWithdrawCash(_ref6, form) {
     var rootState, dispatch, access_token, user, res;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function userWithdrawCash$(_context6) {
@@ -62305,23 +62348,61 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var state = {
+  transactions: []
+};
+var mutations = {
+  setTransactions: function setTransactions(state, transactions) {
+    return state.transactions = transactions;
+  }
+};
 var actions = {
+  fetchTransactions: function fetchTransactions(_ref) {
+    var commit, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function fetchTransactions$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            commit = _ref.commit;
+            _context.prev = 1;
+            _context.next = 4;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/transactions")));
+
+          case 4:
+            res = _context.sent;
+            commit('setTransactions', res.data);
+            _context.next = 11;
+            break;
+
+          case 8:
+            _context.prev = 8;
+            _context.t0 = _context["catch"](1);
+            console.log(_context.t0.response);
+
+          case 11:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, null, null, [[1, 8]]);
+  },
+
   /**
    * Teller deposits cash into an Account Holder's balance.
    * 
    * @param { Object } form 
    */
-  depositCash: function depositCash(_ref, form) {
+  depositCash: function depositCash(_ref2, form) {
     var rootState, access_token, user, res;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function depositCash$(_context) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function depositCash$(_context2) {
       while (1) {
-        switch (_context.prev = _context.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
-            rootState = _ref.rootState;
+            rootState = _ref2.rootState;
             access_token = rootState.auth.token;
             user = rootState.auth.user;
-            _context.prev = 3;
-            _context.next = 6;
+            _context2.prev = 3;
+            _context2.next = 6;
             return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/deposit"), {
               account_number: form.account_number,
               amount: form.amount,
@@ -62333,56 +62414,9 @@ var actions = {
             }));
 
           case 6:
-            res = _context.sent;
+            res = _context2.sent;
             console.log('depositCash', res.data);
             rootState.snackbar.text = "Cash amount $".concat(form.amount, " deposited to account number ").concat(form.account_number, ".");
-            rootState.snackbar.toggle = true;
-            _context.next = 15;
-            break;
-
-          case 12:
-            _context.prev = 12;
-            _context.t0 = _context["catch"](3);
-            console.log(_context.t0.response);
-
-          case 15:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, null, null, [[3, 12]]);
-  },
-
-  /**
-   * Withdraws an amount for an Account Holder.
-   * 
-   * @param { Object } form 
-   */
-  withdrawCash: function withdrawCash(_ref2, form) {
-    var rootState, access_token, user, res;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function withdrawCash$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            rootState = _ref2.rootState;
-            access_token = rootState.auth.token;
-            user = rootState.auth.user;
-            _context2.prev = 3;
-            _context2.next = 6;
-            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/withdraw"), {
-              account_number: form.account_number,
-              amount: form.amount,
-              user_id: user.id
-            }, {
-              headers: {
-                'Authorization': "Bearer ".concat(access_token)
-              }
-            }));
-
-          case 6:
-            res = _context2.sent;
-            console.log(res.data);
-            rootState.snackbar.text = "Cash amount $".concat(form.amount, " withdrawn from account number ").concat(form.account_number, ".");
             rootState.snackbar.toggle = true;
             _context2.next = 15;
             break;
@@ -62398,9 +62432,58 @@ var actions = {
         }
       }
     }, null, null, [[3, 12]]);
+  },
+
+  /**
+   * Withdraws an amount for an Account Holder.
+   * 
+   * @param { Object } form 
+   */
+  withdrawCash: function withdrawCash(_ref3, form) {
+    var rootState, access_token, user, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function withdrawCash$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            rootState = _ref3.rootState;
+            access_token = rootState.auth.token;
+            user = rootState.auth.user;
+            _context3.prev = 3;
+            _context3.next = 6;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/withdraw"), {
+              account_number: form.account_number,
+              amount: form.amount,
+              user_id: user.id
+            }, {
+              headers: {
+                'Authorization': "Bearer ".concat(access_token)
+              }
+            }));
+
+          case 6:
+            res = _context3.sent;
+            console.log(res.data);
+            rootState.snackbar.text = "Cash amount $".concat(form.amount, " withdrawn from account number ").concat(form.account_number, ".");
+            rootState.snackbar.toggle = true;
+            _context3.next = 15;
+            break;
+
+          case 12:
+            _context3.prev = 12;
+            _context3.t0 = _context3["catch"](3);
+            console.log(_context3.t0.response);
+
+          case 15:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, null, null, [[3, 12]]);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  mutations: mutations,
   actions: actions
 });
 

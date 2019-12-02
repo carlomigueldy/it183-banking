@@ -12,6 +12,20 @@ use Illuminate\Support\Facades\Auth;
 class TransactionController extends Controller
 {
     /**
+     * Displays a listing of all transactions.
+     * 
+     * @return { Object }
+     */
+    public function index()
+    {
+        $transactions = Transaction::with('account_transaction', 'account_transaction.account', 'account_transaction.user')->get();
+
+        return response()->json([
+            'transactions' => $transactions,
+        ]);
+    }
+    
+    /**
      * A Teller deposits an amount from
      * an Account Holder.
      * 

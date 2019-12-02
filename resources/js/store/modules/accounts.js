@@ -131,6 +131,11 @@ const actions = {
         }
     },
     
+    /**
+     * An Account Holder withdraws cash.
+     * 
+     * @param { Object } form 
+     */
     async userWithdrawCash({ rootState, dispatch }, form) {
         const access_token = rootState.auth.token
         const user = rootState.auth.user

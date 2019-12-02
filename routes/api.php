@@ -29,3 +29,4 @@ Route::post('accounts/withdraw', 'AccountController@withdraw');
 Route::apiResource('accounts', 'AccountController');
 Route::post('deposit', 'TransactionController@deposit');
 Route::post('withdraw', 'TransactionController@withdraw');
+Route::get('transactions', 'TransactionController@index');
