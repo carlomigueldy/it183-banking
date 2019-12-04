@@ -55,7 +55,7 @@
                     :to="{ name: 'transaction.logs' }"
                     >
                     <v-list-item-icon>
-                        <v-icon>mdi-bank-transfer-in</v-icon>
+                        <v-icon>mdi-cash-multiple</v-icon>
                     </v-list-item-icon>
 
                     <v-list-item-content>

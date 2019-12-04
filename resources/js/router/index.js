@@ -14,6 +14,7 @@ import Teller from '../views/tellers/teller'
 
 import TransactionWithdraw from '../views/transactions/withdraw'
 import TransactionDeposit from '../views/transactions/deposit'
+import TransactionLogs from '../views/transactions/logs'
 
 Vue.use(VueRouter)
 
@@ -73,6 +74,11 @@ export default new VueRouter({
         },
         
         // Transactions
+        {
+            path: '/logs',
+            name: 'transaction.logs',
+            component: TransactionLogs,
+        },
         {
             path: '/withdraw',
             name: 'transaction.withdraw',

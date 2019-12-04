@@ -95,11 +95,18 @@ class AccountController extends Controller
         ]);
 
         $account = Account::where('user_id', $request->user_id)->first();
-        $account->balance -= $request->amount;
-        if ($account->save()) {
+        if ($account->balance < $request->amount) {
+            $account->balance -= $request->amount;
+
+            if ($account->save()) {
+                return response()->json([
+                    'new_balance' => $account->balance,
+                    'message' => 'Amount withdrawn.'
+                ]);
+            }
+        } else {
             return response()->json([
-                'new_balance' => $account->balance,
-                'message' => 'Amount withdrawn.'
+                'meesage' => "The amount must not exceed the account holder's balance.",
             ]);
         }
     }
