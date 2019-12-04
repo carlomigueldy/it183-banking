@@ -20,19 +20,16 @@
                 :items="getAccounts"
                 :search="search"
             >
+                <template v-slot:item.avatar="{ item }">
+                    <v-avatar>
+                        <img src="/img/default/default.png">
+                    </v-avatar>
+                </template>
                 <template v-slot:item.actions="{ item }">
                     <v-row>
                         <v-col>
                             <v-btn-toggle
                                 >
-                                <v-btn
-                                    @click="$router.push({ name: 'accounts.show', params: { id: item.id } })"
-                                    >
-                                    <v-icon>mdi-eye</v-icon>
-                                </v-btn>
-                                <v-btn>
-                                    <v-icon>mdi-pencil</v-icon>
-                                </v-btn>
                                 <v-btn>
                                     <v-icon>mdi-delete</v-icon>
                                 </v-btn>
@@ -57,6 +54,12 @@ export default {
     data: () => ({
         search: '',
         headers: [
+            {
+                text: 'Avatar',
+                align: 'center',
+                sortable: false,
+                value: 'avatar',
+            },
             {
                 text: 'Account Number',
                 align: 'left',
@@ -95,8 +98,13 @@ export default {
             const access_token = this.getAccessToken
             this.fetchAccounts(access_token)
         },
+
+        removeAccount(id) {
+            console.log('removeAccount()', id)
+            this.deleteAccount(id)
+        },
         
-        ...mapActions(['fetchAccounts']),
+        ...mapActions(['fetchAccounts', 'deleteAccount']),
     },
 }
 </script>

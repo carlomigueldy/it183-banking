@@ -2467,9 +2467,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2481,6 +2478,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       search: '',
       headers: [{
+        text: 'Avatar',
+        align: 'center',
+        sortable: false,
+        value: 'avatar'
+      }, {
         text: 'Account Number',
         align: 'left',
         sortable: true,
@@ -2511,8 +2513,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     fetchAllAccounts: function fetchAllAccounts() {
       var access_token = this.getAccessToken;
       this.fetchAccounts(access_token);
+    },
+    removeAccount: function removeAccount(id) {
+      console.log('removeAccount()', id);
+      this.deleteAccount(id);
     }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchAccounts']))
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchAccounts', 'deleteAccount']))
 });
 
 /***/ }),
@@ -2904,12 +2910,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -6087,6 +6087,17 @@ var render = function() {
             },
             scopedSlots: _vm._u([
               {
+                key: "item.avatar",
+                fn: function(ref) {
+                  var item = ref.item
+                  return [
+                    _c("v-avatar", [
+                      _c("img", { attrs: { src: "/img/default/default.png" } })
+                    ])
+                  ]
+                }
+              },
+              {
                 key: "item.actions",
                 fn: function(ref) {
                   var item = ref.item
@@ -6100,28 +6111,6 @@ var render = function() {
                             _c(
                               "v-btn-toggle",
                               [
-                                _c(
-                                  "v-btn",
-                                  {
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.$router.push({
-                                          name: "accounts.show",
-                                          params: { id: item.id }
-                                        })
-                                      }
-                                    }
-                                  },
-                                  [_c("v-icon", [_vm._v("mdi-eye")])],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-btn",
-                                  [_c("v-icon", [_vm._v("mdi-pencil")])],
-                                  1
-                                ),
-                                _vm._v(" "),
                                 _c(
                                   "v-btn",
                                   [_c("v-icon", [_vm._v("mdi-delete")])],
@@ -6986,28 +6975,6 @@ var render = function() {
                               [
                                 _c(
                                   "v-btn",
-                                  {
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.$router.push({
-                                          name: "tellers.show",
-                                          params: { id: item.id }
-                                        })
-                                      }
-                                    }
-                                  },
-                                  [_c("v-icon", [_vm._v("mdi-eye")])],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-btn",
-                                  [_c("v-icon", [_vm._v("mdi-pencil")])],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-btn",
                                   [_c("v-icon", [_vm._v("mdi-delete")])],
                                   1
                                 )
@@ -7307,7 +7274,7 @@ var render = function() {
               headers: _vm.headers,
               items: _vm.mappedLogs,
               search: _vm.search,
-              "items-per-page": "50"
+              "items-per-page": 50
             }
           })
         ],
@@ -61685,21 +61652,20 @@ var actions = {
     }, null, null, [[1, 8]]);
   },
   checkAccount: function checkAccount(_ref3, account_number) {
-    var commit, rootState, _access_token, res;
-
+    var commit, rootState, access_token, res;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function checkAccount$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             commit = _ref3.commit, rootState = _ref3.rootState;
             _context3.prev = 1;
-            _access_token = rootState.token;
+            access_token = rootState.token;
             _context3.next = 5;
             return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/accounts/checkAccount"), {
               account_number: account_number
             }, {
               headers: {
-                'Authorization': "Bearer ".concat(_access_token)
+                'Authorization': "Bearer ".concat(access_token)
               }
             }));
 
@@ -61729,15 +61695,14 @@ var actions = {
    * @param { Object } teller 
    */
   addAccount: function addAccount(_ref4, account) {
-    var state, commit, dispatch, rootState, _access_token2, res;
-
+    var state, commit, dispatch, rootState, access_token, res;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function addAccount$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             state = _ref4.state, commit = _ref4.commit, dispatch = _ref4.dispatch, rootState = _ref4.rootState;
             _context4.prev = 1;
-            _access_token2 = rootState.auth.token;
+            access_token = rootState.auth.token;
             _context4.next = 5;
             return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/accounts"), {
               name: state.form.name,
@@ -61746,7 +61711,7 @@ var actions = {
               password_confirmation: state.form.password
             }, {
               headers: {
-                'Authorization': "Bearer ".concat(_access_token2)
+                'Authorization': "Bearer ".concat(access_token)
               }
             }));
 
@@ -61783,38 +61748,39 @@ var actions = {
    * @param { Integer } id 
    */
   deleteAccount: function deleteAccount(_ref5, id) {
-    var dispatch, res;
+    var dispatch, rootState, access_token, res;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function deleteAccount$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
-            dispatch = _ref5.dispatch;
-            _context5.prev = 1;
-            _context5.next = 4;
+            dispatch = _ref5.dispatch, rootState = _ref5.rootState;
+            access_token = rootState.auth.token;
+            _context5.prev = 2;
+            _context5.next = 5;
             return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/accounts/").concat(id), {}, {
               headers: {
                 'Authorization': "Bearer ".concat(access_token)
               }
             }));
 
-          case 4:
+          case 5:
             res = _context5.sent;
             console.log('[accounts] deleteAccount()', res.data);
             dispatch('fetchAccounts');
-            _context5.next = 12;
+            _context5.next = 13;
             break;
 
-          case 9:
-            _context5.prev = 9;
-            _context5.t0 = _context5["catch"](1);
-            console.log(_context5.t0.response);
+          case 10:
+            _context5.prev = 10;
+            _context5.t0 = _context5["catch"](2);
+            console.log(_context5.t0);
 
-          case 12:
+          case 13:
           case "end":
             return _context5.stop();
         }
       }
-    }, null, null, [[1, 9]]);
+    }, null, null, [[2, 10]]);
   },
 
   /**

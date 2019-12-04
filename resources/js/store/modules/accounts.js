@@ -118,7 +118,8 @@ const actions = {
      * 
      * @param { Integer } id 
      */
-    async deleteAccount({ dispatch }, id) {
+    async deleteAccount({ dispatch, rootState }, id) {
+        const access_token = rootState.auth.token
         try {
             const res = await axios.delete(`${url}/api/accounts/${id}`, {}, {
                 headers: { 'Authorization': `Bearer ${access_token}` }
@@ -127,7 +128,7 @@ const actions = {
             console.log('[accounts] deleteAccount()', res.data)
             dispatch('fetchAccounts')
         } catch (err) {
-            console.log(err.response)
+            console.log(err)
         }
     },
     

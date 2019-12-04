@@ -17,7 +17,7 @@
                 :headers="headers"
                 :items="mappedLogs"
                 :search="search"
-                items-per-page="50"
+                :items-per-page="50"
             ></v-data-table>
         </v-card>
     </v-content>

@@ -18,6 +18,11 @@ class CreateAccountsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('account_number');
             $table->decimal('balance')->default(0);
+            $table->boolean('void')->default(false);
+        });
+
+        Schema::table('accounts', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('accounts');
         });
     }
 

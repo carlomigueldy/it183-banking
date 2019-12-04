@@ -10,6 +10,7 @@ class Account extends Model
         'user_id',
         'balance',
         'account_number',
+        'void',
     ];
 
     public $timestamps = false;
