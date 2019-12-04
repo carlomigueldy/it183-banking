@@ -11,23 +11,40 @@
                     single-line
                     hide-details
                 ></v-text-field>
-
-                <CreateTeller />
             </v-card-title>
 
             <v-data-table
                 :headers="headers"
-                :items="getLogs"
+                :items="mappedLogs"
                 :search="search"
+                items-per-page="50"
             ></v-data-table>
         </v-card>
     </v-content>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-    computed: mapGetters(['getLogs']),
+    created() {
+        this.fetchLogs()
+    },
+
+    data: () => ({
+        search: '',
+        headers: [
+            {
+                text: 'Log',
+                align: 'left',
+                sortable: false,
+                value: 'log_message',
+            },
+        ]
+    }),
+    
+    methods: mapActions(['fetchLogs']),
+    
+    computed: mapGetters(['getLogs', 'mappedLogs']),
 }
 </script>

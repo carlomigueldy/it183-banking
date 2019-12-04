@@ -30,3 +30,4 @@ Route::apiResource('accounts', 'AccountController');
 Route::post('deposit', 'TransactionController@deposit');
 Route::post('withdraw', 'TransactionController@withdraw');
 Route::get('transactions', 'TransactionController@index');
+Route::get('logs', 'LogController@index');

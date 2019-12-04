@@ -6,6 +6,7 @@ import auth from './modules/auth'
 import accounts from './modules/accounts'
 import tellers from './modules/tellers'
 import transactions from './modules/transactions'
+import logs from './modules/logs'
 
 Vue.use(Vuex)
 
@@ -17,5 +18,6 @@ export default new Vuex.Store({
         accounts,
         tellers,
         transactions,
+        logs,
     }
 })

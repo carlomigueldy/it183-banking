@@ -3185,10 +3185,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getLogs'])
+  created: function created() {
+    this.fetchLogs();
+  },
+  data: function data() {
+    return {
+      search: '',
+      headers: [{
+        text: 'Log',
+        align: 'left',
+        sortable: false,
+        value: 'log_message'
+      }]
+    };
+  },
+  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['fetchLogs']),
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getLogs', 'mappedLogs'])
 });
 
 /***/ }),
@@ -7283,9 +7297,7 @@ var render = function() {
                   },
                   expression: "search"
                 }
-              }),
-              _vm._v(" "),
-              _c("CreateTeller")
+              })
             ],
             1
           ),
@@ -7293,8 +7305,9 @@ var render = function() {
           _c("v-data-table", {
             attrs: {
               headers: _vm.headers,
-              items: _vm.getLogs,
-              search: _vm.search
+              items: _vm.mappedLogs,
+              search: _vm.search,
+              "items-per-page": "50"
             }
           })
         ],
@@ -61510,6 +61523,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_accounts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/accounts */ "./resources/js/store/modules/accounts.js");
 /* harmony import */ var _modules_tellers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/tellers */ "./resources/js/store/modules/tellers.js");
 /* harmony import */ var _modules_transactions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/transactions */ "./resources/js/store/modules/transactions.js");
+/* harmony import */ var _modules_logs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/logs */ "./resources/js/store/modules/logs.js");
+
 
 
 
@@ -61526,7 +61541,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
     auth: _modules_auth__WEBPACK_IMPORTED_MODULE_4__["default"],
     accounts: _modules_accounts__WEBPACK_IMPORTED_MODULE_5__["default"],
     tellers: _modules_tellers__WEBPACK_IMPORTED_MODULE_6__["default"],
-    transactions: _modules_transactions__WEBPACK_IMPORTED_MODULE_7__["default"]
+    transactions: _modules_transactions__WEBPACK_IMPORTED_MODULE_7__["default"],
+    logs: _modules_logs__WEBPACK_IMPORTED_MODULE_8__["default"]
   }
 }));
 
@@ -62187,6 +62203,89 @@ var actions = {
   getters: getters,
   actions: actions,
   mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/logs.js":
+/*!********************************************!*\
+  !*** ./resources/js/store/modules/logs.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _url__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../url */ "./resources/js/store/url.js");
+
+
+
+var state = {
+  logs: []
+};
+var getters = {
+  getLogs: function getLogs(state) {
+    return state.logs;
+  },
+  mappedLogs: function mappedLogs(state) {
+    var logs = state.logs;
+    var mappedLogs = logs.map(function (val) {
+      return {
+        log_message: "[".concat(val.created_at, "] Teller ").concat(val.account_transaction.user.name, " ").concat(val.amount_deposit > 0 ? 'deposits $' + val.amount_deposit + ' to ' : val.amount_withdraw > 0 ? 'withdraws $' + val.amount_withdraw + ' to ' : 'N/A', " Account Holder ").concat(val.account_transaction.account.user.name, " with account number ").concat(val.account_transaction.account.account_number, ".")
+      };
+    });
+    return mappedLogs;
+  }
+};
+var mutations = {
+  setLogs: function setLogs(state, logs) {
+    return state.logs = logs;
+  }
+};
+var actions = {
+  /**
+   * Fetches all the transaction logs.
+   */
+  fetchLogs: function fetchLogs(_ref) {
+    var commit, res;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function fetchLogs$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            commit = _ref.commit;
+            _context.prev = 1;
+            _context.next = 4;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_url__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/logs")));
+
+          case 4:
+            res = _context.sent;
+            console.log(res.data);
+            commit('setLogs', res.data);
+            _context.next = 12;
+            break;
+
+          case 9:
+            _context.prev = 9;
+            _context.t0 = _context["catch"](1);
+            console.log(_context.t0.response);
+
+          case 12:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, null, null, [[1, 9]]);
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
 });
 
 /***/ }),
